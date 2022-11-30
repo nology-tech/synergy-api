@@ -1,4 +1,4 @@
-package com.example.synergyapi;
+package com.nology.synergyapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
