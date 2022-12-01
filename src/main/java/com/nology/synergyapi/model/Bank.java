@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 public class Bank {
     private  String bankName;
     private String createdBy;
-    private String logo;
-    private Timestamp dateCreated;
+//    private String logo;
+//    private Timestamp dateCreated;
 
-    public Bank(String bankName, String createdBy, String logo, Timestamp dateCreated) {
+    public Bank(String bankName, String createdBy) {
         this.bankName = bankName;
         this.createdBy = createdBy;
-        this.logo = logo;
-        this.dateCreated = dateCreated;
+//        this.logo = logo;
+//        this.dateCreated = dateCreated;
     }
 
     public String getBankName() {
@@ -31,21 +31,21 @@ public class Bank {
         this.createdBy = createdBy;
     }
 
-    public String getLogo() {
-        return logo;
-    }
+//    public String getLogo() {
+//        return logo;
+//    }
 
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
+//    public void setLogo(String logo) {
+//        this.logo = logo;
+//    }
 
-    public Timestamp getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Timestamp dateCreated) {
-        this.dateCreated = dateCreated;
-    }
+//    public Timestamp getDateCreated() {
+//        return dateCreated;
+//    }
+//
+//    public void setDateCreated(Timestamp dateCreated) {
+//        this.dateCreated = dateCreated;
+//    }
 
 
     @Override
@@ -53,8 +53,8 @@ public class Bank {
         return "Bank{" +
                 "bankName='" + bankName + '\'' +
                 ", createdBy='" + createdBy + '\'' +
-                ", logo='" + logo + '\'' +
-                ", dateCreated=" + dateCreated +
+//                ", logo='" + logo + '\'' +
+//                ", dateCreated=" + dateCreated +
                 '}';
     }
 }
