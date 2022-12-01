@@ -11,6 +11,10 @@ public class Currency {
     private String currency;
     private String symbol;
 
+    public Currency() {
+        super();
+    }
+
     public Currency(String code, String flag, String countryName, String currency, String symbol) {
         this.code = code;
         this.flag = flag;
@@ -23,20 +27,40 @@ public class Currency {
         return code;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getFlag() {
         return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 
     public String getCountryName() {
         return countryName;
     }
 
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
     public String getCurrency() {
         return currency;
     }
 
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public String getSymbol() {
         return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override
