@@ -26,10 +26,4 @@ public class CurrencyController {
     public Currency getCurrencyByCode(@PathVariable String myCode) throws IOException {
         return CurrencyService.getCurrencyData().stream().filter(currency -> currency.getCode().equals(myCode)).collect(Collectors.toList()).get(0);
     }
-
-
-
-
-
-
 }
