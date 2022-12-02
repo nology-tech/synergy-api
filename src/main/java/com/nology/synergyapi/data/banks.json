@@ -14,6 +14,36 @@
     "bankId": "03",
     "bankName": "Bank of America",
     "logo": "https://www.bankbranchlocator.com/logo/bank-of-america.jpg"
+  },
+  {
+    "bankId": "04",
+    "bankName": "Truist",
+    "logo": "https://www.bankbranchlocator.com/logo/truist-bank.jpg"
+  },
+  {
+    "bankId": "05",
+    "bankName": "Citibank",
+    "logo": "https://www.bankbranchlocator.com/logo/citibank.jpg"
+  },
+  {
+    "bankId": "06",
+    "bankName": "U.S. Bank",
+    "logo": "https://www.bankbranchlocator.com/logo/us-bank.jpg"
+  },
+  {
+    "bankId": "07",
+    "bankName": "Regions",
+    "logo": "https://www.bankbranchlocator.com/logo/regions-bank.jpg"
+  },
+  {
+    "bankId": "08",
+    "bankName": "First Citizens Bank",
+    "logo": "https://www.bankbranchlocator.com/logo/first-citizens-bank.jpg"
+  },
+  {
+    "bankId": "09",
+    "bankName": "U.S. Bank",
+    "logo": "https://www.bankbranchlocator.com/logo/us-bank.jpg"
   }
 ]
 
