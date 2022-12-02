@@ -19,7 +19,7 @@ import java.util.Optional;
     @CrossOrigin(origins  =  "http://localhost:8080")
     public class BankController {
         @GetMapping("/banks")
-        public List<Bank> getAllCurrencies() throws IOException {
+        public List<Bank> getAllBanks() throws IOException {
             return BankService.getBankData();
         }
 

@@ -5,15 +5,44 @@ import java.sql.Timestamp;
 public class Bank {
     private  String bankName;
     private String createdBy;
-//    private String logo;
-//    private Timestamp dateCreated;
+    private String logo;
+    private Timestamp dateCreated;
+    private Long bankId;
 
-    public Bank(String bankName, String createdBy) {
+
+    public Bank(String bankName, String logo, Long bankId) {
         this.bankName = bankName;
-        this.createdBy = createdBy;
+        this.logo = logo;
+        this.bankId = bankId;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public Long getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(Long bankId) {
+        this.bankId = bankId;
+    }
+
+    public Bank() {
+
+    }
+
+    // old stuff
+//    public Bank(String bankName, String createdBy) {
+//        this.bankName = bankName;
+//        this.createdBy = createdBy;
 //        this.logo = logo;
 //        this.dateCreated = dateCreated;
-    }
+//    }
 
     public String getBankName() {
         return bankName;

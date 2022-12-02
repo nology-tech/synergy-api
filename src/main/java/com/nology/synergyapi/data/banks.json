@@ -3,17 +3,17 @@
   {
   "bankId": "01",
   "bankName": "Chase",
-  "log": "https://www.bankbranchlocator.com/logo/chase-bank.jpg"
+  "logo": "https://www.bankbranchlocator.com/logo/chase-bank.jpg"
 },
   {
     "bankId": "02",
     "bankName": "Wells Fargo",
-    "log": "https://www.bankbranchlocator.com/logo/wells-fargo-bank.jpg"
+    "logo": "https://www.bankbranchlocator.com/logo/wells-fargo-bank.jpg"
   },
   {
     "bankId": "03",
     "bankName": "Bank of America",
-    "log": "https://www.bankbranchlocator.com/logo/bank-of-america.jpg"
+    "logo": "https://www.bankbranchlocator.com/logo/bank-of-america.jpg"
   }
 ]
 
