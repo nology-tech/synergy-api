@@ -5,23 +5,42 @@ import java.sql.Timestamp;
 public class Bank {
     private  String bankName;
     private String createdBy;
-    private String logo;
+    private String bankLogo;
     private Timestamp dateCreated;
     private Long bankId;
+    private String sortCode;
+    private String iban;
 
-
-    public Bank(String bankName, String logo, Long bankId) {
+    public Bank(String bankName, String bankLogo, Long bankId, String sortCode, String iban) {
         this.bankName = bankName;
-        this.logo = logo;
+        this.bankLogo = bankLogo;
         this.bankId = bankId;
+        this.sortCode = sortCode;
+        this.iban = iban;
     }
 
-    public String getLogo() {
-        return logo;
+    public String getSortCode() {
+        return sortCode;
     }
 
-    public void setLogo(String logo) {
-        this.logo = logo;
+    public void setSortCode(String sortCode) {
+        this.sortCode = sortCode;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
+    public String getBankLogo() {
+        return bankLogo;
+    }
+
+    public void setBankLogo(String logo) {
+        this.bankLogo = logo;
     }
 
     public Long getBankId() {
@@ -36,13 +55,6 @@ public class Bank {
 
     }
 
-    // old stuff
-//    public Bank(String bankName, String createdBy) {
-//        this.bankName = bankName;
-//        this.createdBy = createdBy;
-//        this.logo = logo;
-//        this.dateCreated = dateCreated;
-//    }
 
     public String getBankName() {
         return bankName;
@@ -60,29 +72,15 @@ public class Bank {
         this.createdBy = createdBy;
     }
 
-//    public String getLogo() {
-//        return logo;
-//    }
-
-//    public void setLogo(String logo) {
-//        this.logo = logo;
-//    }
-
-//    public Timestamp getDateCreated() {
-//        return dateCreated;
-//    }
-//
-//    public void setDateCreated(Timestamp dateCreated) {
-//        this.dateCreated = dateCreated;
-//    }
-
 
     @Override
     public String toString() {
         return "Bank{" +
                 "bankName='" + bankName + '\'' +
                 ", createdBy='" + createdBy + '\'' +
-//                ", logo='" + logo + '\'' +
+//                ", sortCode='" + sortCode + '\'' +
+//                ", iban='" + iban + '\'' +
+//                ", bankLogo='" + bankLogo + '\'' +
 //                ", dateCreated=" + dateCreated +
                 '}';
     }
