@@ -44,6 +44,27 @@
     "bankId": "09",
     "bankName": "U.S. Bank",
     "logo": "https://www.bankbranchlocator.com/logo/us-bank.jpg"
+  },
+  {
+    "bankId": "10",
+    "bankName": "First Horizon Bank",
+    "logo": "https://www.bankbranchlocator.com/logo/first-horizon-bank.jpg"
+  },
+  {
+    "bankId": "12",
+    "bankName": "Capital One",
+    "logo": "https://www.bankbranchlocator.com/logo/capital-one.jpg"
+  },
+  {
+    "bankId": "13",
+    "bankName": "Santander Bank",
+    "logo": "https://www.bankbranchlocator.com/logo/santander-bank.jpg"
+  },
+  {
+    "bankId": "14",
+    "bankName": "United Bank",
+    "logo": "https://www.bankbranchlocator.com/logo/united-bank.jpg"
   }
+
 ]
 
