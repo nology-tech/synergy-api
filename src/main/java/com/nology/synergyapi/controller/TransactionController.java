@@ -19,7 +19,7 @@ public class TransactionController {
         return TransactionService.getTransactionData();
     }
 
-    @GetMapping("/users/{uid}")
+    @GetMapping("/transactions/{tid}")
     public Optional<Transaction> getTransactionByID (@PathVariable Long tid) throws IOException {
         return TransactionService.getTransactionByID(tid);
     }
