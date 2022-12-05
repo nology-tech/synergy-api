@@ -1,6 +1,8 @@
 package com.nology.synergyapi.controller;
 
+import com.nology.synergyapi.UserContactsRepository;
 import com.nology.synergyapi.UserProfileRepository;
+import com.nology.synergyapi.model.UserContacts;
 import com.nology.synergyapi.model.UserProfile;
 import com.nology.synergyapi.service.UserService;
 import org.apache.coyote.Response;
@@ -56,4 +58,5 @@ public class UserController {
         userProfileRepo.delete(userProfileRepo.findByUid(id));
         return "Users with id: "+ id + " deleted";
     }
+
 }

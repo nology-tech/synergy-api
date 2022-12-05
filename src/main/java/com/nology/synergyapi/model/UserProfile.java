@@ -108,12 +108,12 @@ public class UserProfile {
         this.address_postCode = address_postCode;
     }
 
-    public Boolean getUser_type() {
+    public Boolean getContactFlag() {
         return isContactFlag;
     }
 
-    public void setUser_type(Boolean isContactFlag) {
-        this.isContactFlag = isContactFlag;
+    public void setContactFlag(Boolean contactFlag) {
+        isContactFlag = contactFlag;
     }
 
     public Date getCreateDateTime() {

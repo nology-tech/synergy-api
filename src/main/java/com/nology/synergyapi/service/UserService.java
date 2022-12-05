@@ -43,7 +43,7 @@ public class UserService {
         userProfile.setAddress_city(userProfile.getAddress_city());
         userProfile.setAddress_state(userProfile.getAddress_state());
         userProfile.setAddress_postCode(userProfile.getAddress_postCode());
-        userProfile.setUser_type(userProfile.getUser_type());
+        userProfile.setContactFlag(userProfile.getContactFlag());
         userProfile.setCreateDateTime(new Timestamp(new Date().getTime()));
 //        System.out.println(userProfile);
         getUserData().add(userProfile);
@@ -63,7 +63,7 @@ public class UserService {
         updatedUser.setAddress_city(newUser.getAddress_city());
         updatedUser.setAddress_state(newUser.getAddress_state());
         updatedUser.setAddress_postCode(newUser.getAddress_postCode());
-        updatedUser.setUser_type(newUser.getUser_type());
+        updatedUser.setContactFlag(newUser.getContactFlag());
         updatedUser.setCreateDateTime(newUser.getCreateDateTime());
         newUser = updatedUser;
         return newUser;
