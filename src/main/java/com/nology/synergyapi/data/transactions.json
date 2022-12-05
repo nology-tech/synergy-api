@@ -1,29 +1,34 @@
 [  {
-    "tid": 1234560,
-    "to": "Benny",
-    "from": "Kooper",
-    "amount": "250",
-    "currency": "USD"
+    "txnId": "ABC1234560",
+    "recipientAccountId": "12345000",
+    "payeeAccountId": "6789000",
+    "payeeAmount": 250,
+    "recipientAmount": 500,
+    "payeeFees": 25,
+    "payeeTotalAmountCharged": 275,
+    "dateCreated": "02-11-2022",
+    "exchangeRate": 2.0000
   },
   {
-    "tid": 1234560,
-    "to": "Benny",
-    "from": "Kooper",
-    "amount": "250",
-    "currency": "USD"
+    "txnId": "ABC1234560",
+    "recipientAccountId": "12345000",
+    "payeeAccountId": "6789000",
+    "payeeAmount": 250,
+    "recipientAmount": 500,
+    "payeeFees": 25,
+    "payeeTotalAmountCharged": 275,
+    "dateCreated": "02-11-2022",
+    "exchangeRate": 2.0000
   },
   {
-    "tid": 1234560,
-    "to": "Benny",
-    "from": "Kooper",
-    "amount": "250",
-    "currency": "USD"
-  },
-  {
-    "tid": 1234560,
-    "to": "Benny",
-    "from": "Kooper",
-    "amount": "250",
-    "currency": "USD"
-  }  
+    "txnId": "ABC1234560",
+    "recipientAccountId": "12345000",
+    "payeeAccountId": "6789000",
+    "payeeAmount": 250,
+    "recipientAmount": 500,
+    "payeeFees": 25,
+    "payeeTotalAmountCharged": 275,
+    "dateCreated": "02-11-2022",
+    "exchangeRate": 2.0000
+  }
 ]
