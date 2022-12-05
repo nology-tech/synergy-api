@@ -27,7 +27,7 @@ public class UserProfile {
     private Date createDateTime;
 
     public UserProfile() {
-        super();
+        this.createDateTime= new Timestamp(new Date().getTime());
     }
 
     public UserProfile(Long uid, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {

@@ -43,4 +43,11 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.toString());
         }
     }
+
+    //Delete a greeting
+    @DeleteMapping("/users/{id}")
+    public String deleteUser(@PathVariable Long id){
+        userProfileRepo.delete(userProfileRepo.findByUid(id));
+        return "Users with id: "+ id + " deleted";
+    }
 }
