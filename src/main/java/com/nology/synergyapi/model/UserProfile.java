@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import java.util.Date;
+
 @Entity
 public class UserProfile {
 
