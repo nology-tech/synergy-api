@@ -18,8 +18,8 @@ public class TransactionService {
         return transactionData;
     }
 
-    public static Optional<Transaction> getTransactionByID(Long tid) throws IOException {
-        Optional<Transaction> userData = getTransactionData().stream().filter(userProfile -> userProfile.getTid()==tid).findFirst();
+    public static Optional<Transaction> getTransactionByUserID(Long tid) throws IOException {
+        Optional<Transaction> userData = getTransactionData().stream().filter(userProfile -> userProfile.get()==tid).findFirst();
         System.out.println(userData);
         return userData;
     }
