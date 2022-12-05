@@ -4,35 +4,24 @@ import java.sql.Timestamp;
 
 public class Bank {
     private  String bankName;
-    private String createdBy;
     private String bankLogo;
     private Timestamp dateCreated;
-    private Long bankId;
-    private String sortCode;
-    private String iban;
+    private Long sortCode;
 
-    public Bank(String bankName, String bankLogo, Long bankId, String sortCode, String iban) {
+
+    public Bank(String bankName, String bankLogo, Long sortCode) {
         this.bankName = bankName;
         this.bankLogo = bankLogo;
-        this.bankId = bankId;
         this.sortCode = sortCode;
-        this.iban = iban;
+
     }
 
-    public String getSortCode() {
+    public Long getSortCode() {
         return sortCode;
     }
 
-    public void setSortCode(String sortCode) {
+    public void setSortCode(Long sortCode) {
         this.sortCode = sortCode;
-    }
-
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
     }
 
     public String getBankLogo() {
@@ -41,14 +30,6 @@ public class Bank {
 
     public void setBankLogo(String logo) {
         this.bankLogo = logo;
-    }
-
-    public Long getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(Long bankId) {
-        this.bankId = bankId;
     }
 
     public Bank() {
@@ -64,24 +45,15 @@ public class Bank {
         this.bankName = bankName;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
 
     @Override
     public String toString() {
         return "Bank{" +
                 "bankName='" + bankName + '\'' +
-                ", createdBy='" + createdBy + '\'' +
-//                ", sortCode='" + sortCode + '\'' +
-//                ", iban='" + iban + '\'' +
-//                ", bankLogo='" + bankLogo + '\'' +
-//                ", dateCreated=" + dateCreated +
+                ", bankLogo='" + bankLogo + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", sortCode=" + sortCode +
                 '}';
     }
 }
+
