@@ -2,172 +2,129 @@
 [
   {
 
-  "bankId": "01",
+  "sortCode": "01",
   "bankName": "Chase",
-  "bankLogo": "https://www.bankbranchlocator.com/logo/chase-bank.jpg",
-  "sortCode": "",
-  "iban": ""
+  "bankLogo": "https://www.bankbranchlocator.com/logo/chase-bank.jpg"
+
 },
   {
-    "bankId": "02",
+    "sortCode": "02",
     "bankName": "Wells Fargo",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/wells-fargo-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/wells-fargo-bank.jpg"
+
   },
   {
-    "bankId": "03",
+    "sortCode": "03",
     "bankName": "Bank of America",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/bank-of-america.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/bank-of-america.jpg"
+
   },
   {
-    "bankId": "04",
+    "sortCode": "04",
     "bankName": "Truist",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/truist-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/truist-bank.jpg"
+
   },
   {
-    "bankId": "05",
+    "sortCode": "05",
     "bankName": "Citibank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/citibank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/citibank.jpg"
+
   },
   {
-    "bankId": "06",
+    "sortCode": "06",
     "bankName": "U.S. Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/us-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/us-bank.jpg"
   },
   {
-    "bankId": "07",
+    "sortCode": "07",
     "bankName": "Regions",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/regions-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/regions-bank.jpg"
   },
   {
-    "bankId": "08",
+    "sortCode": "08",
     "bankName": "First Citizens Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/first-citizens-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/first-citizens-bank.jpg"
   },
   {
-    "bankId": "09",
+    "sortCode": "09",
     "bankName": "U.S. Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/us-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/us-bank.jpg"
   },
   {
-    "bankId": "10",
+    "sortCode": "10",
     "bankName": "First Horizon Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/first-horizon-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/first-horizon-bank.jpg"
   },
   {
-    "bankId": "12",
+    "sortCode": "12",
     "bankName": "Capital One",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/capital-one.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/capital-one.jpg"
   },
   {
-    "bankId": "13",
+    "sortCode": "13",
     "bankName": "Santander Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/santander-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/santander-bank.jpg"
   },
   {
-    "bankId": "14",
+    "sortCode": "14",
     "bankName": "United Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/united-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/united-bank.jpg"
   },
     {
-    "bankId": "15",
+    "sortCode": "15",
     "bankName": "Deutsche Bank",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/Deutche-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/Deutche-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "16",
+    "sortCode": "16",
     "bankName": "ING Group",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/ing-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/ing-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "17",
+    "sortCode": "17",
     "bankName": "TD Bank",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/td-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/td-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "18",
+    "sortCode": "18",
     "bankName": "Societe Generale",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/societe-general-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/societe-general-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "19",
+    "sortCode": "19",
     "bankName": "UBS Bank",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/ubs-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/ubs-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "20",
+    "sortCode": "20",
     "bankName": "Raiffeisen Bank",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/raiffeisen-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/raiffeisen-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "21",
+    "sortCode": "21",
     "bankName": "Getin Bank",
-    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/get-in-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://inkbotdesign.com/wp-content/uploads/2018/04/get-in-bank-logo-explained.jpg?ezimgfmt=ng:webp/ngcb15"
   },
   {
-    "bankId": "22",
+    "sortCode": "22",
     "bankName": "Frost Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/frost-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/frost-bank.jpg"
   },
   {
-    "bankId": "23",
+    "sortCode": "23",
     "bankName": "Fifth Third Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/fifth-third-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/fifth-third-bank.jpg"
   },
   {
-    "bankId": "24",
+    "sortCode": "24",
     "bankName": "M&T Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/mt-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/mt-bank.jpg"
   },
   {
-    "bankId": "25",
+    "sortCode": "25",
     "bankName": "Cadence Bank",
-    "bankLogo": "https://www.bankbranchlocator.com/logo/cadence-bank.jpg",
-    "sortCode": "",
-    "iban": ""
+    "bankLogo": "https://www.bankbranchlocator.com/logo/cadence-bank.jpg"
   }
 ]
 
