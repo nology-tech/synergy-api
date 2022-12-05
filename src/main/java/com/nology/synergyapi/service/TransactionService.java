@@ -14,13 +14,20 @@ public class TransactionService {
 //    List<UserProfile> userData = objectMapper.readValue(new File("src/main/java/com/nology/synergyapi/data/users.json"), new TypeReference<List<UserProfile>>() { });
 
     public static List<Transaction> getTransactionData() throws IOException {
-        List<Transaction> transactionData = objectMapper.readValue(new File("src/main/java/com/nology/synergyapi/data/users.json"), new TypeReference<List<Transaction>>() { });
+        List<Transaction> transactionData = objectMapper.readValue(new File("src/main/java/com/nology/synergyapi/data/users.json"),
+                new TypeReference<List<Transaction>>() { });
         return transactionData;
     }
 
-    public static Optional<Transaction> getTransactionByUserID(Long tid) throws IOException {
-        Optional<Transaction> userData = getTransactionData().stream().filter(userProfile -> userProfile.get()==tid).findFirst();
-        System.out.println(userData);
-        return userData;
+    public static Optional<Transaction> getTransactionByID(String txnId) throws IOException {
+        Optional<Transaction> transactionData = getTransactionData().stream().filter(transaction -> transaction.getTxnId()==txnId).findFirst();
+        System.out.println(transactionData);
+        return transactionData;
+    }
+
+    public static Optional<Transaction> getTransactionByUserAccountId(String accountId) throws IOException {
+        Optional<Transaction> transactionData = getTransactionData().stream().filter(transaction -> transaction.getPayeeAccountId()==accountId).findFirst();
+        System.out.println(transactionData);
+        return transactionData;
     }
 }

@@ -15,13 +15,18 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:8080")
 public class TransactionController {
     @GetMapping("/transactions")
-    public List<Transaction> getAllUsers() throws IOException {
+    public List<Transaction> getAllTransactions() throws IOException {
         return TransactionService.getTransactionData();
     }
 
     @GetMapping("/transactions/{tid}")
-    public Optional<Transaction> getTransactionByID (@PathVariable Long tid) throws IOException {
-        return TransactionService.getTransactionByUserID(tid);
+    public Optional<Transaction> getTransactionByID (@PathVariable String txnId) throws IOException {
+        return TransactionService.getTransactionByID(txnId);
+    }
+
+    @GetMapping("transaction/{accountId}")
+    public Optional<Transaction> getTransactionsByUser(@PathVariable String accountId) throws IOException {
+        return TransactionService.getTransactionByUserAccountId(accountId);
     }
 }
 
