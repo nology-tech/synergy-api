@@ -23,7 +23,7 @@ public class UserProfile {
     private String address_city;
     private String address_state;
     private String address_postCode;
-    private String user_type;
+    private Boolean  isContactFlag;
     private Date createDateTime;
 
     public UserProfile() {
@@ -40,7 +40,7 @@ public class UserProfile {
         this.address_city = address_city;
         this.address_state = address_state;
         this.address_postCode = address_postCode;
-        this.user_type = user_type;
+        this.isContactFlag = isContactFlag;
         this.createDateTime = new Timestamp(new Date().getTime());
     }
 
@@ -108,12 +108,12 @@ public class UserProfile {
         this.address_postCode = address_postCode;
     }
 
-    public String getUser_type() {
-        return user_type;
+    public Boolean getUser_type() {
+        return isContactFlag;
     }
 
-    public void setUser_type(String user_type) {
-        this.user_type = user_type;
+    public void setUser_type(Boolean isContactFlag) {
+        this.isContactFlag = isContactFlag;
     }
 
     public Date getCreateDateTime() {
@@ -136,7 +136,7 @@ public class UserProfile {
                 ", address_city='" + address_city + '\'' +
                 ", address_state='" + address_state + '\'' +
                 ", address_postCode='" + address_postCode + '\'' +
-                ", user_type='" + user_type + '\'' +
+                ", isContactFlag='" + isContactFlag + '\'' +
                 ", createDateTime=" + createDateTime +
                 '}';
     }
