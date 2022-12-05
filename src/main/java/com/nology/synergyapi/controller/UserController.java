@@ -3,6 +3,7 @@ package com.nology.synergyapi.controller;
 import com.nology.synergyapi.UserProfileRepository;
 import com.nology.synergyapi.model.UserProfile;
 import com.nology.synergyapi.service.UserService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,17 +24,22 @@ public class UserController {
     UserProfileRepository userProfileRepo;
 
     @GetMapping("/users")
-    public List<UserProfile> getAllUsers() throws IOException {
-        return UserService.getUserData();
+    public ResponseEntity <List<UserProfile>> getAllUsers() throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userProfileRepo.findAll());
     }
 
     @GetMapping("/users/{uid}")
-    public Optional<UserProfile> getUserByID (@PathVariable Long uid) throws IOException {
-        return UserService.getUserByID(uid);
+    public ResponseEntity <String> getUserByID (@PathVariable Long uid) throws IOException {
+
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(userProfileRepo.findByUid(uid).toString());
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id: " + uid +" Doesn't exist");
+        }
     }
 
     @PostMapping("/createContact")
-    public ResponseEntity<String> createGreeting(@RequestBody UserProfile contact){
+    public ResponseEntity<String> createUser(@RequestBody UserProfile contact){
         userProfileRepo.save(contact);
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(contact.toString()+ " added");
