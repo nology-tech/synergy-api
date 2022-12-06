@@ -9,11 +9,10 @@ import java.util.Date;
 
 @Entity
 public class Account {
+//    @Column(name = "accountID", nullable = false)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "accountID", nullable = false)
-//    @JdbcTypeCode(SqlTypes.VARCHAR)
-    private String accountID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int accountID;
     private String sortCode;
     private String userID;
     private String currencyID;
@@ -23,7 +22,14 @@ public class Account {
     private double accountBalance;
     private Timestamp dateCreated;
 
-    public Account(String accountID, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
+    public Account(int accountID, String sortCode, String userID, String currencyID) {
+        this.accountID = accountID;
+        this.sortCode = sortCode;
+        this.userID = userID;
+        this.currencyID = currencyID;
+        this.dateCreated = new Timestamp(new Date().getTime());
+    }
+    public Account(int accountID, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
         this.accountID = accountID;
         this.sortCode = sortCode;
         this.userID = userID;
@@ -34,23 +40,17 @@ public class Account {
         this.accountBalance = accountBalance;
         this.dateCreated = new Timestamp(new Date().getTime());
     }
-//    public Account(String accountId, String userId, String sortCode, String currencyId) {
-//        this.accountID = accountId;
-//        this.userID = userId;
-//        this.sortCode = sortCode;
-//        this.currencyID = currencyId;
-//        this.dateCreated = new Timestamp(new Date().getTime());
-//    }
 
     public Account() {
+//        this.sortCode="000"
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public String getAccountID() {
+    public int getAccountID() {
         return accountID;
     }
 
-    public void setAccountID(String accountID) {
+    public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
 
