@@ -14,15 +14,15 @@ public class UserContacts {
     @Column(name = "userContactId", nullable = false)
 
     private Long userContactId;
-    private Long uid;
-    private List<Long> contactIds;
+    private Long userID;
+    private Long contactId;
 
     public UserContacts() {
     }
 
-    public UserContacts(Long uid, List<Long> contactIds) {
-        this.uid = uid;
-        this.contactIds = contactIds;
+    public UserContacts(Long userID, List<Long> contactIds) {
+        this.userID = userID;
+        this.contactId = contactId;
     }
 
     public Long getUserContactId() {
@@ -33,19 +33,28 @@ public class UserContacts {
         this.userContactId = userContactId;
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getuserID() {
+        return userID;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setuserID(Long userID) {
+        this.userID = userID;
     }
 
-    public List<Long> getContactIds() {
-        return contactIds;
+    public Long getContactId() {
+        return contactId;
     }
 
-    public void setContactIds(List<Long> contactIds) {
-        this.contactIds = contactIds;
+    public void setContactId(Long contactId) {
+        this.contactId = contactId;
+    }
+
+    @Override
+    public String toString() {
+        return "UserContacts{" +
+                "userContactId=" + userContactId +
+                ", userID=" + userID +
+                ", contactId=" + contactId +
+                '}';
     }
 }

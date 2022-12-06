@@ -5,16 +5,14 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import java.util.Date;
-
 @Entity
-public class UserProfile {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "uid", nullable = false)
+    @Column(name = "userID", nullable = false)
 
-    private Long uid;
+    private Long userID;
     private String firstName;
     private String lastName;
     private String email;
@@ -23,15 +21,15 @@ public class UserProfile {
     private String address_city;
     private String address_state;
     private String address_postCode;
-    private Boolean  isContactFlag;
+    private Boolean isContactFlag;
     private Date createDateTime;
 
-    public UserProfile() {
+    public Users() {
         this.createDateTime= new Timestamp(new Date().getTime());
     }
 
-    public UserProfile(Long uid, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {
-        this.uid = uid;
+    public Users(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -126,8 +124,8 @@ public class UserProfile {
 
     @Override
     public String toString() {
-        return "UserProfile{" +
-                "uid=" + uid +
+        return "Users{" +
+                "userID=" + userID +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
@@ -136,16 +134,16 @@ public class UserProfile {
                 ", address_city='" + address_city + '\'' +
                 ", address_state='" + address_state + '\'' +
                 ", address_postCode='" + address_postCode + '\'' +
-                ", isContactFlag='" + isContactFlag + '\'' +
+                ", isContactFlag=" + isContactFlag +
                 ", createDateTime=" + createDateTime +
                 '}';
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getuserID() {
+        return userID;
     }
 
-    public void setUid(Long uid) {
-        this.uid = uid;
+    public void setuserID(Long userID) {
+        this.userID = userID;
     }
 }
