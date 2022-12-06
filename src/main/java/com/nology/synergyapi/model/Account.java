@@ -10,39 +10,48 @@ import java.util.Date;
 @Entity
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "accountIdr", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "accountID", nullable = false)
 //    @JdbcTypeCode(SqlTypes.VARCHAR)
-    private String accountId;
-    private String userId;
+    private String accountID;
     private String sortCode;
-    private String accountNumber; // do we need both accountId and accountNumber
-    private String accountName;
-    private double accountFunds;
+    private String userID;
+    private String currencyID;
+    private String IBAN;
+    private String accountType;
+    private String accountStatus;
+    private double accountBalance;
     private Timestamp dateCreated;
 
-    public Account(String accountId, String userId, String sortCode, String accountNumber) {
-        this.accountId = accountId;
-        this.userId = userId;
+    public Account(String accountID, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
+        this.accountID = accountID;
         this.sortCode = sortCode;
-        this.accountNumber = accountNumber;
+        this.userID = userID;
+        this.currencyID = currencyID;
+        this.IBAN = IBAN;
+        this.accountType = accountType;
+        this.accountStatus = accountStatus;
+        this.accountBalance = accountBalance;
+        this.dateCreated = new Timestamp(new Date().getTime());
+    }
+//    public Account(String accountId, String userId, String sortCode, String currencyId) {
+//        this.accountID = accountId;
+//        this.userID = userId;
+//        this.sortCode = sortCode;
+//        this.currencyID = currencyId;
+//        this.dateCreated = new Timestamp(new Date().getTime());
+//    }
+
+    public Account() {
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getAccountID() {
+        return accountID;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 
     public String getSortCode() {
@@ -53,28 +62,52 @@ public class Account {
         this.sortCode = sortCode;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getCurrencyID() {
+        return currencyID;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setCurrencyID(String currencyID) {
+        this.currencyID = currencyID;
     }
 
-    public double getAccountFunds() {
-        return accountFunds;
+    public String getIBAN() {
+        return IBAN;
     }
 
-    public void setAccountFunds(double accountFunds) {
-        this.accountFunds = accountFunds;
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public String getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
+    }
+
+    public double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
     }
 
     public Timestamp getDateCreated() {
@@ -88,12 +121,14 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "accountId=" + accountId +
-                ", userId='" + userId + '\'' +
+                "accountID='" + accountID + '\'' +
                 ", sortCode='" + sortCode + '\'' +
-                ", accountNumber='" + accountNumber + '\'' +
-                ", accountName='" + accountName + '\'' +
-                ", accountFunds=" + accountFunds +
+                ", userID='" + userID + '\'' +
+                ", currencyID='" + currencyID + '\'' +
+                ", IBAN='" + IBAN + '\'' +
+                ", accountType='" + accountType + '\'' +
+                ", accountStatus='" + accountStatus + '\'' +
+                ", accountBalance=" + accountBalance +
                 ", dateCreated=" + dateCreated +
                 '}';
     }

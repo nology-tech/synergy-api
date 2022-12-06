@@ -1,36 +1,41 @@
 package com.nology.synergyapi.controller;
 
 import com.nology.synergyapi.model.Account;
-import com.nology.synergyapi.repository.AccountRepository;
+import com.nology.synergyapi.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:8080")
 public class AccountController {
 
     @Autowired
-    AccountRepository repository;
+    AccountRepository accountRepository;
+
 
     @GetMapping("/account/{id}")
-    public ResponseEntity<Optional<Account>> getGreetingById(@PathVariable String id) {
-        // what made up my response
-        // status code
-        // body - our actual greeting()
-        // headers - additional information regarding the request and response
-
-        // ResponseEntity
-        // we can configure our entire response using this
-        // .status() configure the status code we receive
-        return ResponseEntity.status(HttpStatus.OK).body(repository.findById(id));
+    public ResponseEntity<Optional<Account>> getAccountById(@PathVariable String id) {
+        return ResponseEntity.status(HttpStatus.OK).body(accountRepository.findById(id));
     }
 
+    // INDEX route (GET ALL)
+    @GetMapping  ("/accounts")
+    public ResponseEntity<List<Account>> getAllAccounts () {
+        return ResponseEntity.status(HttpStatus.OK).body(accountRepository.findAll());
+    }
 
+//    // CREATE route
+//    @PostMapping("/greetings")
+//    public ResponseEntity<String> createGreeting(@RequestBody Account account) {
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//        account.setDateCreated(timestamp);
+//        repository.save(account);
+////        id++;
+//        return ResponseEntity.status(HttpStatus.OK).body(account + " added");
+//    }
 }
