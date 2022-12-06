@@ -19,14 +19,14 @@ public class TransactionService {
         return transactionData;
     }
 
-    public static Optional<Transaction> getTransactionByID(String txnId) throws IOException {
-        Optional<Transaction> transactionData = getTransactionData().stream().filter(transaction -> transaction.getTxnId()==txnId).findFirst();
-        System.out.println(transactionData);
-        return transactionData;
-    }
-
-    public static Optional<Transaction> getTransactionByUserAccountId(String accountId) throws IOException {
+    public static Optional<Transaction> getTransactionByUserId(String userId) throws IOException {
+        //need to get account id by user id
+        String accountId = userId; //shall be replaced with API call
         Optional<Transaction> transactionData = getTransactionData().stream().filter(transaction -> transaction.getPayeeAccountId()==accountId).findFirst();
+        //need to get currency from account ID
+        //getCurrency/accountId
+        //need to get user name via account id
+        //getUserName/accountId
         System.out.println(transactionData);
         return transactionData;
     }

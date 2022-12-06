@@ -19,14 +19,9 @@ public class TransactionController {
         return TransactionService.getTransactionData();
     }
 
-    @GetMapping("/transactions/{tid}")
-    public Optional<Transaction> getTransactionByID (@PathVariable String txnId) throws IOException {
-        return TransactionService.getTransactionByID(txnId);
-    }
-
-    @GetMapping("transaction/{accountId}")
-    public Optional<Transaction> getTransactionsByUser(@PathVariable String accountId) throws IOException {
-        return TransactionService.getTransactionByUserAccountId(accountId);
+    @GetMapping("transactions/{userId}")
+    public Optional<Transaction> getTransactionsByUser(@PathVariable String userId) throws IOException {
+        return TransactionService.getTransactionByUserId(userId);
     }
 }
 
