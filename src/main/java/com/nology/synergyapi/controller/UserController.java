@@ -1,8 +1,7 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.UserRepository;
-import com.nology.synergyapi.model.Users;
-import jakarta.persistence.Entity;
+import com.nology.synergyapi.data.Repository.UserRepository;
+import com.nology.synergyapi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ public class UserController {
     UserRepository userRepo;
 
     @GetMapping("/users")
-    public ResponseEntity <List<Users>> getAllUsers() throws IOException {
+    public ResponseEntity <List<User>> getAllUsers() throws IOException {
         return ResponseEntity.status(HttpStatus.OK).body(userRepo.findAll());
     }
 
@@ -36,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping("/createContact")
-    public ResponseEntity<String> createUser(@RequestBody Users contact){
+    public ResponseEntity<String> createUser(@RequestBody User contact){
         userRepo.save(contact);
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(contact.toString()+ " added");
@@ -55,8 +54,8 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public String updateUser(@PathVariable Long id, @RequestBody Users newContact){
-        Users curContact = userRepo.findByUserID(id);
+    public String updateUser(@PathVariable Long id, @RequestBody User newContact){
+        User curContact = userRepo.findByUserID(id);
         if(newContact.getuserID()!=null){
             curContact.setuserID(newContact.getuserID());
         }

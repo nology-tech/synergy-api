@@ -2,12 +2,10 @@ package com.nology.synergyapi.model;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-public class UserContacts {
+public class UserContact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -17,10 +15,10 @@ public class UserContacts {
     private Long userID;
     private Long contactId;
 
-    public UserContacts() {
+    public UserContact() {
     }
 
-    public UserContacts(Long userID, List<Long> contactIds) {
+    public UserContact(Long userID, List<Long> contactIds) {
         this.userID = userID;
         this.contactId = contactId;
     }

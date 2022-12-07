@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,11 +24,11 @@ public class Users {
     private Boolean isContactFlag;
     private Date createDateTime;
 
-    public Users() {
+    public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
     }
 
-    public Users(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {
+    public User(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
