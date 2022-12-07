@@ -29,8 +29,7 @@ public class Transaction {
 
     public Transaction(String txnId, String recipientAccountId, String payeeAccountId,
                        double payeeAmount, double recipientAmount, double payeeFees,
-                       double payeeTotalAmountCharged, Date dateCreated, String recipientCurrency,
-                       String payeeCurrency, double exchangeRate) {
+                       double payeeTotalAmountCharged, Date dateCreated,  double exchangeRate) {
 
         this.txnId = txnId;
         this.recipientAccountId = recipientAccountId;
@@ -40,8 +39,6 @@ public class Transaction {
         this.payeeFees = payeeFees;
         this.payeeTotalAmountCharged = payeeTotalAmountCharged;
         this.dateCreated = dateCreated;
-        this.recipientCurrency = recipientCurrency;
-        this.payeeCurrency = payeeCurrency;
         this.exchangeRate = exchangeRate;
     }
 
