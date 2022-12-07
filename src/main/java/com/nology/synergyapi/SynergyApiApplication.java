@@ -13,7 +13,6 @@ import java.util.Date;
 public class SynergyApiApplication {
 
 	public static void main(String[] args) {
-		System.out.println(new Timestamp(new Date().getTime()));
 		SpringApplication.run(SynergyApiApplication.class, args);
 	}
 }
