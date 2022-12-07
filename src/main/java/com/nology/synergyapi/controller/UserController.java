@@ -54,4 +54,42 @@ public class UserController {
         return "Users with id: "+ id + " deleted";
     }
 
+    @PutMapping("/users/{id}")
+    public String updateUser(@PathVariable Long id, @RequestBody Users newContact){
+        Users curContact = userRepo.findByUserID(id);
+        if(newContact.getuserID()!=null){
+            curContact.setuserID(newContact.getuserID());
+        }
+        if(newContact.getFirstName()!=null){
+            curContact.setFirstName(newContact.getFirstName());
+        }
+        if(newContact.getLastName()!=null){
+            curContact.setLastName(newContact.getLastName());
+        }
+        if(newContact.getEmail()!=null){
+            curContact.setEmail(newContact.getEmail());
+        }
+        if(newContact.getAddress_houseNum() != null){
+            curContact.setAddress_houseNum(newContact.getAddress_houseNum());
+        }
+        if(newContact.getAddress_streetName()!=null){
+            curContact.setAddress_streetName(newContact.getAddress_streetName());
+        }
+        if(newContact.getAddress_city() != null){
+            curContact.setAddress_city(newContact.getAddress_city());
+        }
+        if(newContact.getAddress_state()!=null){
+            curContact.setAddress_state(newContact.getAddress_state());
+        }
+        if(newContact.getAddress_postCode()!= null){
+            curContact.setAddress_postCode(newContact.getAddress_postCode());
+        }
+        if(newContact.getContactFlag()!=null){
+            curContact.setContactFlag(newContact.getContactFlag());
+        }
+
+        userRepo.save(curContact);
+        return "Updated Contact : " + curContact;
+    }
+
 }
