@@ -20,7 +20,7 @@ public class AccountController {
 
 
     @GetMapping("/account/{id}")
-    public ResponseEntity<Optional<Account>> getAccountById(@PathVariable String id) {
+    public ResponseEntity<Optional<Account>> getAccountById(@PathVariable long id) {
         return ResponseEntity.status(HttpStatus.OK).body(repository.findById(id));
     }
 
@@ -38,5 +38,22 @@ public class AccountController {
         repository.save(account);
 //        id++;
         return ResponseEntity.status(HttpStatus.OK).body(account + " added");
+    }
+
+    // UPDATE route
+    @PutMapping("/account/{id}")
+    public Account updateAccount (@PathVariable long id, @RequestBody Account newAccount) {
+        // change the account with the new info - getting the existing ID
+        Account account = repository.findById(id).orElse(null);
+
+        account.setAccountBalance(newAccount.getAccountBalance());
+
+        account.setAccountStatus(newAccount.getAccountStatus());
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        account.setDateCreated(timestamp);
+
+        repository.save(account);
+        return account;
     }
 }

@@ -42,7 +42,6 @@ public class Account {
     }
 
     public Account() {
-//        this.sortCode="000"
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
