@@ -1,11 +1,7 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.UserContactsRepository;
-import com.nology.synergyapi.UserProfileRepository;
-import com.nology.synergyapi.model.UserContacts;
-import com.nology.synergyapi.model.UserProfile;
-import com.nology.synergyapi.service.UserService;
-import org.apache.coyote.Response;
+import com.nology.synergyapi.data.Repository.UserRepository;
+import com.nology.synergyapi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,36 +9,34 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins  =  "http://localhost:8080")
-//@CrossOrigin(origins  =  "http://localhost:3000")
+@CrossOrigin(origins  = {"http://localhost:3000"})
 //@Entity
 //@Table(name = "ARTICLES")
 public class UserController {
 
     @Autowired
-    UserProfileRepository userProfileRepo;
+    UserRepository userRepo;
 
     @GetMapping("/users")
-    public ResponseEntity <List<UserProfile>> getAllUsers() throws IOException {
-        return ResponseEntity.status(HttpStatus.OK).body(userProfileRepo.findAll());
+    public ResponseEntity <List<User>> getAllUsers() throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userRepo.findAll());
     }
 
     @GetMapping("/users/{uid}")
     public ResponseEntity <String> getUserByID (@PathVariable Long uid) throws IOException {
 
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(userProfileRepo.findByUid(uid).toString());
+            return ResponseEntity.status(HttpStatus.OK).body(userRepo.findByUserID(uid).toString());
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id: " + uid +" Doesn't exist");
         }
     }
 
     @PostMapping("/createContact")
-    public ResponseEntity<String> createUser(@RequestBody UserProfile contact){
-        userProfileRepo.save(contact);
+    public ResponseEntity<String> createUser(@RequestBody User contact){
+        userRepo.save(contact);
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(contact.toString()+ " added");
         } catch (Exception e) {
@@ -55,8 +49,46 @@ public class UserController {
     //Delete a greeting
     @DeleteMapping("/users/{id}")
     public String deleteUser(@PathVariable Long id){
-        userProfileRepo.delete(userProfileRepo.findByUid(id));
+        userRepo.delete(userRepo.findByUserID(id));
         return "Users with id: "+ id + " deleted";
+    }
+
+    @PutMapping("/users/{id}")
+    public String updateUser(@PathVariable Long id, @RequestBody User newContact){
+        User curContact = userRepo.findByUserID(id);
+        if(newContact.getuserID()!=null){
+            curContact.setuserID(newContact.getuserID());
+        }
+        if(newContact.getFirstName()!=null){
+            curContact.setFirstName(newContact.getFirstName());
+        }
+        if(newContact.getLastName()!=null){
+            curContact.setLastName(newContact.getLastName());
+        }
+        if(newContact.getEmail()!=null){
+            curContact.setEmail(newContact.getEmail());
+        }
+        if(newContact.getAddress_houseNum() != null){
+            curContact.setAddress_houseNum(newContact.getAddress_houseNum());
+        }
+        if(newContact.getAddress_streetName()!=null){
+            curContact.setAddress_streetName(newContact.getAddress_streetName());
+        }
+        if(newContact.getAddress_city() != null){
+            curContact.setAddress_city(newContact.getAddress_city());
+        }
+        if(newContact.getAddress_state()!=null){
+            curContact.setAddress_state(newContact.getAddress_state());
+        }
+        if(newContact.getAddress_postCode()!= null){
+            curContact.setAddress_postCode(newContact.getAddress_postCode());
+        }
+        if(newContact.getContactFlag()!=null){
+            curContact.setContactFlag(newContact.getContactFlag());
+        }
+
+        userRepo.save(curContact);
+        return "Updated Contact : " + curContact;
     }
 
 }

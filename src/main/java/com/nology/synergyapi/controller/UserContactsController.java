@@ -1,9 +1,7 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.UserContactsRepository;
-import com.nology.synergyapi.UserProfileRepository;
-import com.nology.synergyapi.model.UserContacts;
-import com.nology.synergyapi.model.UserProfile;
+import com.nology.synergyapi.data.Repository.UserContactsRepository;
+import com.nology.synergyapi.model.UserContact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins  =  "http://localhost:8080")
-//@CrossOrigin(origins  =  "http://localhost:3000")
+@CrossOrigin(origins  = {"http://localhost:3000"})
 //@Entity
 //@Table(name = "ARTICLES")
 public class UserContactsController {
@@ -23,22 +20,18 @@ public class UserContactsController {
     UserContactsRepository userContactsRepo;
 
     @GetMapping("/userContacts")
-    public ResponseEntity <List<UserContacts>> getAllUserContacts() throws IOException {
+    public ResponseEntity <List<UserContact>> getAllUserContacts() throws IOException {
         return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll());
     }
 
     @GetMapping("/userContacts/{uid}")
-    public ResponseEntity <String> getUserContactsByID (@PathVariable Long uid) throws IOException {
+    public ResponseEntity <List<UserContact>> getUserContactsByID (@PathVariable Long uid) throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll().stream().filter(userContact->userContact.getuserID().equals(uid)).toList());
 
-        try{
-            return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findByUserContactId(uid).toString());
-        }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id: " + uid +" Doesn't exist");
-        }
     }
 
     @PostMapping("/createUserContacts")
-    public ResponseEntity<String> createUserContacts(@RequestBody UserContacts userContact){
+    public ResponseEntity<String> createUserContacts(@RequestBody UserContact userContact){
         userContactsRepo.save(userContact);
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(userContact.toString()+ " added");
@@ -49,10 +42,10 @@ public class UserContactsController {
         }
     }
 
-    @DeleteMapping("/userContacts/{id}")
-    public String deleteUserContact(@PathVariable Long uid){
-        userContactsRepo.delete(userContactsRepo.findByUserContactId(uid));
-        return "Users with id: "+ uid + " deleted";
+    @DeleteMapping("/userContacts/{userContactId}")
+    public String deleteUserContact(@PathVariable Long userContactId){
+        userContactsRepo.delete(userContactsRepo.findByUserContactId(userContactId));
+        return "Users with id: "+ userContactId + " deleted";
     }
 
 }
