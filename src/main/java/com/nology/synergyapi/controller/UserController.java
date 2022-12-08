@@ -1,6 +1,6 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.data.Repository.UserRepository;
+import com.nology.synergyapi.repository.UserRepository;
 import com.nology.synergyapi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +34,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/createContact")
+    @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User contact){
         userRepo.save(contact);
         return ResponseEntity.status(HttpStatus.CREATED).body(contact);

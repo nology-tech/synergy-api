@@ -27,7 +27,6 @@ public class UserContactsController {
     @GetMapping("/userContacts/{uid}")
     public ResponseEntity <List<UserContact>> getUserContactsByID (@PathVariable Long uid) throws IOException {
         return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll().stream().filter(userContact->userContact.getuserID().equals(uid)).toList());
-
     }
 
     @PostMapping("/createUserContacts")

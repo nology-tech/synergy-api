@@ -29,6 +29,10 @@ public class User {
     @OneToOne( fetch = FetchType.LAZY)
     private Account account;
 
+    @OneToMany (cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<UserContact> userContacts= new ArrayList<>();
+
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
     }
@@ -158,5 +162,9 @@ public class User {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public List<UserContact> getUserContacts() {
+        return userContacts;
     }
 }

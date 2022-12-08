@@ -28,6 +28,10 @@ public class Account {
             orphanRemoval = true)
     private List<Transaction> transactions= new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name="sortCode")
+    private Bank bank;
+
     public Account(int accountID, String sortCode, String userID, String currencyID) {
         this.accountID = accountID;
         this.sortCode = sortCode;
@@ -148,5 +152,9 @@ public class Account {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
+    }
+
+    public Bank getBank() {
+        return bank;
     }
 }
