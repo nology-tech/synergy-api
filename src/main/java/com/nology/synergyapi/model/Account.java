@@ -5,11 +5,13 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Account {
-//    @Column(name = "accountID", nullable = false)
+    //    @Column(name = "accountID", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int accountID;
@@ -22,6 +24,10 @@ public class Account {
     private double accountBalance;
     private Timestamp dateCreated;
 
+    @OneToMany (cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Transaction> transactions= new ArrayList<>();
+
     public Account(int accountID, String sortCode, String userID, String currencyID) {
         this.accountID = accountID;
         this.sortCode = sortCode;
@@ -29,6 +35,7 @@ public class Account {
         this.currencyID = currencyID;
         this.dateCreated = new Timestamp(new Date().getTime());
     }
+
     public Account(int accountID, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
         this.accountID = accountID;
         this.sortCode = sortCode;
@@ -42,6 +49,9 @@ public class Account {
     }
 
     public Account() {
+//        this.sortCode="000";
+//        this.userID="1000000";
+//        this.currencyID="USD";
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
@@ -130,5 +140,13 @@ public class Account {
                 ", accountBalance=" + accountBalance +
                 ", dateCreated=" + dateCreated +
                 '}';
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

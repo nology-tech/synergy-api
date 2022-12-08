@@ -3,7 +3,9 @@ package com.nology.synergyapi.model;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class User {
@@ -23,6 +25,9 @@ public class User {
     private String address_postCode;
     private Boolean isContactFlag;
     private Date createDateTime;
+
+    @OneToOne( fetch = FetchType.LAZY)
+    private Account account;
 
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
@@ -145,5 +150,13 @@ public class User {
 
     public void setuserID(Long userID) {
         this.userID = userID;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
