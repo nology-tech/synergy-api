@@ -34,7 +34,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/createContact")
+    @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User contact){
         userRepo.save(contact);
         return ResponseEntity.status(HttpStatus.CREATED).body(contact);
