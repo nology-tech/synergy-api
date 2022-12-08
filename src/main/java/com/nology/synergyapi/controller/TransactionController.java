@@ -17,20 +17,19 @@ public class TransactionController {
     private  TransactionService transactionService;
 
 
-
     @GetMapping("/transactions")
     public List<Transaction> getAllTransactions() throws IOException {
         return transactionService.getTransactionData();
     }
 
     @GetMapping("/transactions/{userId}")
-    public List<Transaction> getTransactionsByUser(@PathVariable String userId) throws IOException {
+    public List<Transaction> getTransactionsByUser(@PathVariable Long userId) throws IOException {
         return transactionService.getTransactionByUserId(userId);
     }
 
     @PostMapping("/transactions")
-    public Transaction createTransaction(@RequestParam Transaction transaction ) throws IOException {
-
+    public Transaction createTransaction(@RequestBody Transaction transaction ) throws IOException {
+        System.out.println(transaction);
         return transactionService.createTransaction(transaction);
     }
 

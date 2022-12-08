@@ -12,9 +12,11 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     //@Column(name = "tid", nullable = false)
 
-    private String txnId;
-    private String recipientAccountId;
-    private String payeeAccountId;
+    private Long txnId;
+    @OneToOne( fetch = FetchType.LAZY)
+    private Account recipientAccount;
+    @OneToOne( fetch = FetchType.LAZY)
+    private Account payeeAccount;
     private double payeeAmount;
     private double recipientAmount;
     private double payeeFees;
@@ -28,13 +30,13 @@ public class Transaction {
         super();
     }
 
-    public Transaction(String txnId, String recipientAccountId, String payeeAccountId,
+    public Transaction(Long txnId, Account recipientAccount, Account payeeAccount,
                        double payeeAmount, double recipientAmount, double payeeFees,
                        double payeeTotalAmountCharged, Date dateCreated,  double exchangeRate) {
 
         this.txnId = txnId;
-        this.recipientAccountId = recipientAccountId;
-        this.payeeAccountId = payeeAccountId;
+        this.recipientAccount = recipientAccount;
+        this.payeeAccount = payeeAccount;
         this.payeeAmount = payeeAmount;
         this.recipientAmount = recipientAmount;
         this.payeeFees = payeeFees;
@@ -43,28 +45,20 @@ public class Transaction {
         this.exchangeRate = exchangeRate;
     }
 
-    public String getTxnId() {
-        return txnId;
+    public Account getRecipientAccount() {
+        return recipientAccount;
     }
 
-    public void setTxnId(String txnId) {
-        this.txnId = txnId;
+    public void setRecipientAccount(Account recipientAccount) {
+        this.recipientAccount = recipientAccount;
     }
 
-    public String getRecipientAccountId() {
-        return recipientAccountId;
+    public Account getPayeeAccount() {
+        return payeeAccount;
     }
 
-    public void setRecipientAccountId(String recipientAccountId) {
-        this.recipientAccountId = recipientAccountId;
-    }
-
-    public String getPayeeAccountId() {
-        return payeeAccountId;
-    }
-
-    public void setPayeeAccountId(String payeeAccountId) {
-        this.payeeAccountId = payeeAccountId;
+    public void setPayeeAccount(Account payeeAccount) {
+        this.payeeAccount = payeeAccount;
     }
 
     public double getPayeeAmount() {

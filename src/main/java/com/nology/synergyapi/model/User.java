@@ -33,7 +33,7 @@ public class User {
         this.createDateTime= new Timestamp(new Date().getTime());
     }
 
-    public User(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {
+    public User(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Account account) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,6 +45,7 @@ public class User {
         this.address_postCode = address_postCode;
         this.isContactFlag = isContactFlag;
         this.createDateTime = new Timestamp(new Date().getTime());
+        this.account = account;
     }
 
     public String getFirstName() {

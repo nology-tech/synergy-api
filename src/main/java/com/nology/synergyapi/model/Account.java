@@ -1,8 +1,6 @@
 package com.nology.synergyapi.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -14,7 +12,7 @@ public class Account {
     //    @Column(name = "accountID", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int accountID;
+    private int id;
     private String sortCode;
     private String userID;
     private String currencyID;
@@ -24,20 +22,22 @@ public class Account {
     private double accountBalance;
     private Timestamp dateCreated;
 
+    //shows relationship between account and a transaction
+    //an account have many transaction
     @OneToMany (cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Transaction> transactions= new ArrayList<>();
 
-    public Account(int accountID, String sortCode, String userID, String currencyID) {
-        this.accountID = accountID;
+    public Account(int id, String sortCode, String userID, String currencyID) {
+        this.id = id;
         this.sortCode = sortCode;
         this.userID = userID;
         this.currencyID = currencyID;
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public Account(int accountID, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
-        this.accountID = accountID;
+    public Account(int id, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
+        this.id = id;
         this.sortCode = sortCode;
         this.userID = userID;
         this.currencyID = currencyID;
@@ -55,12 +55,12 @@ public class Account {
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public int getAccountID() {
-        return accountID;
+    public int getId() {
+        return id;
     }
 
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSortCode() {
@@ -130,7 +130,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "accountID='" + accountID + '\'' +
+                "accountID='" + id + '\'' +
                 ", sortCode='" + sortCode + '\'' +
                 ", userID='" + userID + '\'' +
                 ", currencyID='" + currencyID + '\'' +
