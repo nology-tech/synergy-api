@@ -6,21 +6,21 @@ public class Bank {
     private  String bankName;
     private String bankLogo;
     private Timestamp dateCreated;
-    private Long sortCode;
+    private String sortCode;
 
 
-    public Bank(String bankName, String bankLogo, Long sortCode) {
+    public Bank(String bankName, String bankLogo, String sortCode) {
         this.bankName = bankName;
         this.bankLogo = bankLogo;
         this.sortCode = sortCode;
 
     }
 
-    public Long getSortCode() {
+    public String getSortCode() {
         return sortCode;
     }
 
-    public void setSortCode(Long sortCode) {
+    public void setSortCode(String sortCode) {
         this.sortCode = sortCode;
     }
 
