@@ -5,16 +5,18 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Account {
-//    @Column(name = "accountID", nullable = false)
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int accountID;
+    @Column(name = "accountID", nullable = false)
+    private long accountID;
     private String sortCode;
-    private String userID;
     private String currencyID;
     private String IBAN;
     private String accountType;
@@ -22,17 +24,39 @@ public class Account {
     private double accountBalance;
     private Timestamp dateCreated;
 
-    public Account(int accountID, String sortCode, String userID, String currencyID) {
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "userID", referencedColumnName = "userID")
+    private User user;
+
+    @OneToMany (cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Transaction> transactions= new ArrayList<>();
+
+    public Account(long accountID, String sortCode, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated, User user, List<Transaction> transactions) {
         this.accountID = accountID;
         this.sortCode = sortCode;
-        this.userID = userID;
+        this.currencyID = currencyID;
+        this.IBAN = IBAN;
+        this.accountType = accountType;
+        this.accountStatus = accountStatus;
+        this.accountBalance = accountBalance;
+        this.dateCreated = dateCreated;
+        this.user = user;
+        this.transactions = transactions;
+    }
+
+    public Account(long accountID, String sortCode, User user, String currencyID) {
+        this.accountID = accountID;
+        this.sortCode = sortCode;
+        this.user = user;
         this.currencyID = currencyID;
         this.dateCreated = new Timestamp(new Date().getTime());
     }
-    public Account(int accountID, String sortCode, String userID, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
+
+    public Account(long accountID, String sortCode, User user, String currencyID, String IBAN, String accountType, String accountStatus, double accountBalance, Timestamp dateCreated) {
         this.accountID = accountID;
         this.sortCode = sortCode;
-        this.userID = userID;
+        this.user = user;
         this.currencyID = currencyID;
         this.IBAN = IBAN;
         this.accountType = accountType;
@@ -42,14 +66,17 @@ public class Account {
     }
 
     public Account() {
+//        this.sortCode="000";
+//        this.userID="1000000";
+//        this.currencyID="USD";
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public int getAccountID() {
+    public long getAccountID() {
         return accountID;
     }
 
-    public void setAccountID(int accountID) {
+    public void setAccountID(long accountID) {
         this.accountID = accountID;
     }
 
@@ -61,13 +88,13 @@ public class Account {
         this.sortCode = sortCode;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+//    public String getUserID() {
+//        return userID;
+//    }
+//
+//    public void setUserID(String userID) {
+//        this.userID = userID;
+//    }
 
     public String getCurrencyID() {
         return currencyID;
@@ -122,7 +149,7 @@ public class Account {
         return "Account{" +
                 "accountID='" + accountID + '\'' +
                 ", sortCode='" + sortCode + '\'' +
-                ", userID='" + userID + '\'' +
+                ", userID='" + user.getuserID() + '\'' +
                 ", currencyID='" + currencyID + '\'' +
                 ", IBAN='" + IBAN + '\'' +
                 ", accountType='" + accountType + '\'' +
@@ -130,5 +157,21 @@ public class Account {
                 ", accountBalance=" + accountBalance +
                 ", dateCreated=" + dateCreated +
                 '}';
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

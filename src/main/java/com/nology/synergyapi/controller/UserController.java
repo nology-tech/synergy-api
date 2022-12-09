@@ -1,6 +1,6 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.data.Repository.UserRepository;
+import com.nology.synergyapi.repository.UserRepository;
 import com.nology.synergyapi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -49,11 +49,10 @@ public class Bank {
     @Override
     public String toString() {
         return "Bank{" +
+                "sortCode=" + sortCode +'\'' +
                 "bankName='" + bankName + '\'' +
                 ", bankLogo='" + bankLogo + '\'' +
                 ", dateCreated=" + dateCreated +
-                ", sortCode=" + sortCode +
                 '}';
     }
 }
-
