@@ -22,8 +22,6 @@ public class Transaction {
     private double payeeFees;
     private double payeeTotalAmountCharged;
     private Date dateCreated;
-    private String recipientCurrency;
-    private String payeeCurrency;
     private double exchangeRate;
 
     public Transaction(){
@@ -99,22 +97,6 @@ public class Transaction {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public String getRecipientCurrency() {
-        return recipientCurrency;
-    }
-
-    public void setRecipientCurrency(String recipientCurrency) {
-        this.recipientCurrency = recipientCurrency;
-    }
-
-    public String getPayeeCurrency() {
-        return payeeCurrency;
-    }
-
-    public void setPayeeCurrency(String payeeCurrency) {
-        this.payeeCurrency = payeeCurrency;
     }
 
     public double getExchangeRate() {
