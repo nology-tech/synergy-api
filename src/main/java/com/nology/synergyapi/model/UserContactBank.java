@@ -7,10 +7,10 @@ public class UserContactBank {
     private String bankIcon;
     private String sortCode;
     private String IBAN;
-    private int account;
+    private long account;
     private String account_currency;
 
-    public UserContactBank(String firstName, String lastName, String bankName, String bankIcon, String sortCode, String IBAN, int account, String account_currency) {
+    public UserContactBank(String firstName, String lastName, String bankName, String bankIcon, String sortCode, String IBAN, long account, String account_currency) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bankName = bankName;
@@ -69,11 +69,11 @@ public class UserContactBank {
         this.IBAN = IBAN;
     }
 
-    public int getAccount() {
+    public long getAccount() {
         return account;
     }
 
-    public void setAccount(int account) {
+    public void setAccount(long account) {
         this.account = account;
     }
 

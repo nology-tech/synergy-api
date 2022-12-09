@@ -7,52 +7,58 @@ import java.util.List;
 @Entity
 public class UserContact {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "userContactId", nullable = false)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @Column(name = "userContactId", nullable = false)
 
-    private Long userContactId;
-    private Long userID;
-    private Long contactId;
+    @EmbeddedId
+    UserContactKey userContactId;
+
+    @ManyToOne
+    @MapsId("userID")
+    @JoinColumn(name = "userID")
+    private User user;
+
+    @ManyToOne
+    @MapsId("contactId")
+    @JoinColumn(name = "contactId")
+    private User user2;
 
     public UserContact() {
     }
 
-    public UserContact(Long userID, List<Long> contactIds) {
-        this.userID = userID;
-        this.contactId = contactId;
+//    @ManyToOne
+//    @JoinColumn(name="contactId")
+//    @Column(insertable=false, updatable=false)'
+//    private User user;
+
+
+    public UserContact(User user, User user2) {
+        this.user = user;
+        this.user2 = user2;
     }
 
-    public Long getUserContactId() {
-        return userContactId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserContactId(Long userContactId) {
-        this.userContactId = userContactId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getuserID() {
-        return userID;
+    public User getUser2() {
+        return user2;
     }
 
-    public void setuserID(Long userID) {
-        this.userID = userID;
-    }
-
-    public Long getContactId() {
-        return contactId;
-    }
-
-    public void setContactId(Long contactId) {
-        this.contactId = contactId;
+    public void setUser2(User user2) {
+        this.user2 = user2;
     }
 
     @Override
     public String toString() {
-        return "UserContacts{" +
-                "userContactId=" + userContactId +
-                ", userID=" + userID +
-                ", contactId=" + contactId +
+        return "UserContact{" +
+                "user=" + user +
+                ", user2=" + user2 +
                 '}';
     }
 }

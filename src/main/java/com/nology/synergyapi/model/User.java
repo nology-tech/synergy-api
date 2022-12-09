@@ -6,8 +6,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -26,18 +28,26 @@ public class User {
     private Boolean isContactFlag;
     private Date createDateTime;
 
-    @OneToOne( fetch = FetchType.LAZY)
+    @OneToOne( mappedBy = "user")
     private Account account;
 
-    @OneToMany (cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<UserContact> userContacts= new ArrayList<>();
+    @OneToMany( mappedBy = "user")
+    List<UserContact> contacts;
+
+    @OneToMany( mappedBy = "user2")
+    List<UserContact> users;
+
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "usercontacts",
+//        joinColumns = { @JoinColumn(name = "userID", referencedColumnName = "userID")},
+//            inverseJoinColumns = { @JoinColumn(name = "contactUserID", referencedColumnName = "userID")})
+//    private User user;
 
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
     }
 
-    public User(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, String user_type) {
+    public User(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -164,7 +174,7 @@ public class User {
         this.account = account;
     }
 
-    public List<UserContact> getUserContacts() {
-        return userContacts;
+    public List<UserContact> getContacts() {
+        return contacts;
     }
 }
