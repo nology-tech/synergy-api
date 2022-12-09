@@ -33,8 +33,7 @@ public class UserContactsService {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println(bank);
-            UserContactBank userContact = new UserContactBank(user.getFirstName(), user.getLastName(), 
+            UserContactBank userContact = new UserContactBank(user.getFirstName(), user.getLastName(),
                     bank.getBankName(), bank.getBankLogo(), 
                     account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID());
             userContacts.add(userContact);

@@ -21,9 +21,6 @@ public class BankService {
     }
 
     public static Bank getBank(String sortCode) throws IOException {
-        System.out.println(sortCode);
-        System.out.println(getBankData());
-        System.out.println(getBankData().stream().filter(banks -> banks.getSortCode().equals(sortCode)));
         return getBankData().stream().filter(banks -> banks.getSortCode().equals(sortCode)).collect(Collectors.toList()).get(0);
     }
 
