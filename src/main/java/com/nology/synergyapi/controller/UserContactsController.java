@@ -27,7 +27,7 @@ public class UserContactsController {
 //    public ResponseEntity <List<UserContact>> getAllUserContacts() throws IOException {
 //        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll());
 //    }
-
+//    ADD COMMENT HERE!
 //    @GetMapping("/userContacts/{uid}")
 //    public ResponseEntity <List<UserContact>> getUserContactsByID (@PathVariable Long uid) throws IOException {
 //        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll().stream().filter(userContact->userContact.getUserID().equals(uid)).toList());
