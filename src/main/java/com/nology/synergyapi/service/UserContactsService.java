@@ -24,14 +24,9 @@ public class UserContactsService {
         User mainUser = userRepository.findByUserID(userId);
         List<UserContact> contacts = mainUser.getContacts();
 
-        System.out.println(mainUser);
-
         contacts.forEach (contact -> {
-            System.out.println(contact);
             User user=contact.getUser2();
-            System.out.println(user);
             Account account = user.getAccount();
-            System.out.println(account);
             Bank bank;
             try {
                 bank = bankService.getBank(account.getSortCode());
@@ -45,7 +40,6 @@ public class UserContactsService {
             userContacts.add(userContact);
        });
 
-       System.out.println(userContacts);
        return userContacts;
     }
 

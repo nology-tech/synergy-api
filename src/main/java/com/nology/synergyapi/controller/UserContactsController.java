@@ -34,8 +34,8 @@ public class UserContactsController {
 //    }
 
     @GetMapping("/contacts/{userId}")
-    public  List<UserContactBank> getContactsByUserID (@PathVariable Long userId) throws IOException {
-        return userContactsService.getUserContactsWithBank(userId);
+    public  ResponseEntity <List<UserContactBank>> getContactsByUserID (@PathVariable Long userId) throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userContactsService.getUserContactsWithBank(userId));
     }
 
     @PostMapping("/createUserContacts")
