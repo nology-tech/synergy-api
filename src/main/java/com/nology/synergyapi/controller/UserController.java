@@ -34,10 +34,16 @@ public class UserController {
         }
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User contact){
+    @PostMapping("/createContact")
+    public ResponseEntity<String> createUser(@RequestBody User contact){
         userRepo.save(contact);
-        return ResponseEntity.status(HttpStatus.CREATED).body(contact);
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(contact.toString()+ " added");
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.toString());
+        }
     }
 
     //Delete a greeting
