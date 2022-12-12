@@ -14,6 +14,5 @@ public interface UserContactsRepository extends JpaRepository<UserContact, Strin
     // find - look for something
     // By - the condition of what is being searched or looke for
     // id - the variable
-
-
 }
+

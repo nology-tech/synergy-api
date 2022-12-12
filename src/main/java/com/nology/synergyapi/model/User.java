@@ -1,5 +1,6 @@
 package com.nology.synergyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -30,6 +31,7 @@ public class User {
 
 
     @OneToMany( mappedBy = "user")
+    @JsonIgnore
     List<UserContact> contacts;
 
     @OneToMany( mappedBy = "user2")

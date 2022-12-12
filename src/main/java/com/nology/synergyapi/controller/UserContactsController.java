@@ -1,8 +1,9 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.repository.UserContactsRepository;
+
 import com.nology.synergyapi.model.UserContact;
 import com.nology.synergyapi.model.UserContactBank;
+import com.nology.synergyapi.repository.UserContactsRepository;
 import com.nology.synergyapi.service.UserContactsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
