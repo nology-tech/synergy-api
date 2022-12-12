@@ -38,6 +38,8 @@ public class UserContactsController {
         return ResponseEntity.status(HttpStatus.OK).body(userContactsService.getUserContactsWithBank(userId));
     }
 
+
+
     @PostMapping("/createUserContacts")
     public ResponseEntity<String> createUserContacts(@RequestBody UserContact userContact){
         userContactsRepo.save(userContact);
