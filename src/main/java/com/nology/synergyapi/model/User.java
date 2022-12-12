@@ -1,5 +1,6 @@
 package com.nology.synergyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
@@ -28,20 +29,13 @@ public class User {
     private Boolean isContactFlag;
     private Date createDateTime;
 
-    @OneToOne( mappedBy = "user")
-    private Account account;
 
     @OneToMany( mappedBy = "user")
+    @JsonIgnore
     List<UserContact> contacts;
 
     @OneToMany( mappedBy = "user2")
     List<UserContact> users;
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "usercontacts",
-//        joinColumns = { @JoinColumn(name = "userID", referencedColumnName = "userID")},
-//            inverseJoinColumns = { @JoinColumn(name = "contactUserID", referencedColumnName = "userID")})
-//    private User user;
 
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
@@ -164,14 +158,6 @@ public class User {
 
     public void setuserID(Long userID) {
         this.userID = userID;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public List<UserContact> getContacts() {

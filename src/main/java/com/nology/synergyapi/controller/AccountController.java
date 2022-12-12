@@ -1,7 +1,7 @@
 package com.nology.synergyapi.controller;
 
 import com.nology.synergyapi.model.Account;
-import com.nology.synergyapi.AccountRepository;
+import com.nology.synergyapi.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
