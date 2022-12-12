@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nology.synergyapi.repository.AccountRepository;
 import com.nology.synergyapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,12 @@ import com.nology.synergyapi.model.UserContactBank;
 public class UserContactsService {
     @Autowired
     UserRepository userRepository;
+    @Autowired
     BankService bankService;
+
+    @Autowired
+    AccountRepository accountRepository;
+
 
     public List<UserContactBank> getUserContactsWithBank(Long userId) {
         List<UserContactBank> userContacts = new ArrayList<>();
@@ -26,7 +32,7 @@ public class UserContactsService {
 
         contacts.forEach (contact -> {
             User user=contact.getUser2();
-            Account account = user.getAccount();
+            Account account = accountRepository.findByUserID(user.getuserID());
             Bank bank;
             try {
                 bank = bankService.getBank(account.getSortCode());
