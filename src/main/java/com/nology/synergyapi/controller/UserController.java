@@ -21,6 +21,9 @@ public class UserController {
     @Autowired
     UserRepository userRepo;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/users")
     public ResponseEntity <List<User>> getAllUsers() throws IOException {
         return ResponseEntity.status(HttpStatus.OK).body(userRepo.findAll());
@@ -34,6 +37,11 @@ public class UserController {
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id: " + uid +" Doesn't exist");
         }
+    }
+
+    @GetMapping("/userbyemail")
+    public ResponseEntity <User> getUserByEmail (@RequestParam String email) throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserByEmail(email,userRepo.findAll()));
     }
 
     @PostMapping("/users")

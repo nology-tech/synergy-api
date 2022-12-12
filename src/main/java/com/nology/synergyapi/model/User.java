@@ -30,6 +30,7 @@ public class User {
     private Date createDateTime;
 
     @OneToOne( mappedBy = "user")
+    @JsonIgnore
     private Account account;
 
     @OneToMany( mappedBy = "user")
@@ -37,6 +38,7 @@ public class User {
     List<UserContact> contacts;
 
     @OneToMany( mappedBy = "user2")
+    @JsonIgnore
     List<UserContact> users;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
