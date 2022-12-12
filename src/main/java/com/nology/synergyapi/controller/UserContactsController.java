@@ -40,7 +40,7 @@ public class UserContactsController {
 
 
 
-    @PostMapping("/createUserContacts")
+    @PostMapping("/UserContacts")
     public ResponseEntity<String> createUserContacts(@RequestBody UserContact userContact){
         userContactsRepo.save(userContact);
         try {
@@ -52,10 +52,10 @@ public class UserContactsController {
         }
     }
 
-    @DeleteMapping("/userContacts/{userContactId}")
-    public String deleteUserContact(@PathVariable Long userContactId){
-        userContactsRepo.delete(userContactsRepo.findByUserContactId(userContactId));
-        return "Users with id: "+ userContactId + " deleted";
+    @DeleteMapping("/userContacts/{ContactId}")
+    public String deleteUserContact(@PathVariable Long ContactId){
+        userContactsRepo.delete(userContactsRepo.findByUserContactId(ContactId));
+        return "Users with id: "+ ContactId + " deleted";
     }
 
 }
