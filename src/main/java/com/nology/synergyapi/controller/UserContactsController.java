@@ -1,6 +1,5 @@
 package com.nology.synergyapi.controller;
 
-
 import com.nology.synergyapi.model.UserContact;
 import com.nology.synergyapi.model.UserContactBank;
 import com.nology.synergyapi.repository.UserContactsRepository;
@@ -28,7 +27,7 @@ public class UserContactsController {
 //    public ResponseEntity <List<UserContact>> getAllUserContacts() throws IOException {
 //        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll());
 //    }
-
+//    ADD COMMENT HERE!
 //    @GetMapping("/userContacts/{uid}")
 //    public ResponseEntity <List<UserContact>> getUserContactsByID (@PathVariable Long uid) throws IOException {
 //        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll().stream().filter(userContact->userContact.getUserID().equals(uid)).toList());
@@ -39,7 +38,9 @@ public class UserContactsController {
         return ResponseEntity.status(HttpStatus.OK).body(userContactsService.getUserContactsWithBank(userId));
     }
 
-    @PostMapping("/createUserContacts")
+
+
+    @PostMapping("/UserContacts")
     public ResponseEntity<String> createUserContacts(@RequestBody UserContact userContact){
         userContactsRepo.save(userContact);
         try {
@@ -51,10 +52,10 @@ public class UserContactsController {
         }
     }
 
-    @DeleteMapping("/userContacts/{userContactId}")
-    public String deleteUserContact(@PathVariable Long userContactId){
-        userContactsRepo.delete(userContactsRepo.findByUserContactId(userContactId));
-        return "Users with id: "+ userContactId + " deleted";
+    @DeleteMapping("/userContacts/{ContactId}")
+    public String deleteUserContact(@PathVariable Long ContactId){
+        userContactsRepo.delete(userContactsRepo.findByUserContactId(ContactId));
+        return "Users with id: "+ ContactId + " deleted";
     }
 
 }

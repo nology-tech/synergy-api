@@ -29,13 +29,23 @@ public class User {
     private Boolean isContactFlag;
     private Date createDateTime;
 
+    @OneToOne( mappedBy = "user")
+    @JsonIgnore
+    private Account account;
 
     @OneToMany( mappedBy = "user")
     @JsonIgnore
     List<UserContact> contacts;
 
     @OneToMany( mappedBy = "user2")
+    @JsonIgnore
     List<UserContact> users;
+
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "usercontacts",
+//        joinColumns = { @JoinColumn(name = "userID", referencedColumnName = "userID")},
+//            inverseJoinColumns = { @JoinColumn(name = "contactUserID", referencedColumnName = "userID")})
+//    private User user;
 
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
@@ -137,7 +147,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "{" +
                 "userID=" + userID +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -158,6 +168,14 @@ public class User {
 
     public void setuserID(Long userID) {
         this.userID = userID;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public List<UserContact> getContacts() {
