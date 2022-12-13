@@ -2,6 +2,7 @@ package com.nology.synergyapi.controller;
 
 import com.nology.synergyapi.model.Transaction;
 import com.nology.synergyapi.service.TransactionService;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +27,10 @@ public class TransactionController {
         return transactionService.getTransactionByUserId(userId);
     }
 
-//    @PostMapping("/transactions")
-//    public Transaction createTransaction(@RequestBody Object transactionData ) throws IOException {
-//        return transactionService.createTransaction(transactionData);
-//    }
+    @PostMapping("/transactions")
+    public Transaction createTransaction(@RequestBody JSONObject transactionData ) throws IOException {
+            return transactionService.createTransaction(transactionData);
+    }
 
 }
 
