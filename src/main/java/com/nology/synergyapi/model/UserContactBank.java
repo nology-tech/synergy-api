@@ -9,8 +9,9 @@ public class UserContactBank {
     private String IBAN;
     private long account;
     private String account_currency;
+    private String accountType;
 
-    public UserContactBank(String firstName, String lastName, String bankName, String bankIcon, String sortCode, String IBAN, long account, String account_currency) {
+    public UserContactBank(String firstName, String lastName, String bankName, String bankIcon, String sortCode, String IBAN, long account, String account_currency, String accountType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bankName = bankName;
@@ -19,6 +20,7 @@ public class UserContactBank {
         this.IBAN = IBAN;
         this.account = account;
         this.account_currency = account_currency;
+        this.accountType = accountType;
     }
 
     public String getFirstName() {
@@ -85,6 +87,14 @@ public class UserContactBank {
         this.account_currency = account_currency;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
     @Override
     public String toString() {
         return "UserContactBank{" +
@@ -96,6 +106,7 @@ public class UserContactBank {
                 ", IBAN='" + IBAN + '\'' +
                 ", account=" + account +
                 ", account_currency='" + account_currency + '\'' +
+                ", accountType='" + accountType + '\'' +
                 '}';
     }
 }

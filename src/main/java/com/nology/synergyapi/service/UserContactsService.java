@@ -41,7 +41,7 @@ public class UserContactsService {
             }
             UserContactBank userContact = new UserContactBank(user.getFirstName(), user.getLastName(),
                     bank.getBankName(), bank.getBankLogo(), 
-                    account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID());
+                    account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID(), account.getAccountType());
             userContacts.add(userContact);
        });
 
