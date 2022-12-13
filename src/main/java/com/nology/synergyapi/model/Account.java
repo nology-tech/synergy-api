@@ -56,12 +56,17 @@ public class Account {
     }
 
     public Account() {
-//        this.sortCode="000";
-//        this.userID="1000000";
-//        this.currencyID="USD";
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
+    public Account(String sortCode, String currencyID, String accountType, User user) {
+        this.sortCode = sortCode;
+        this.currencyID = currencyID;
+        this.accountType = accountType;
+        this.user = user;
+        this.accountBalance = 10000;
+        this.accountStatus = "Active";
+    }
 
     public long getAccountID() {
         return accountID;
