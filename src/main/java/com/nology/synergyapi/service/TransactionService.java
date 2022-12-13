@@ -8,6 +8,8 @@ import com.nology.synergyapi.model.User;
 import com.nology.synergyapi.repository.AccountRepository;
 import com.nology.synergyapi.repository.TransactionRepository;
 import com.nology.synergyapi.repository.UserRepository;
+
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +39,17 @@ public class TransactionService {
         return account.getTransactions();
     }
 
-//    public Transaction createTransaction(Object transaction) {
-//        transactionRepository.save(transaction);
-//        return transaction;
-//    }
+    public Transaction createTransaction(JSONObject rawTransaction) {
+        Account payeeAccount = accountRepository.findById((long) rawTransaction.get("payeeAccountId")).orElse(null);
+        Account recipientAccount = accountRepository.findById((long) rawTransaction.get("recipientAccount")).orElse(null);
+        Transaction transaction = new Transaction();
+        transaction.setPayeeAccount(payeeAccount);
+        transaction.setRecipientAccount(recipientAccount);
+        transaction.setPayeeAmount((double) rawTransaction.get("payeeAmount"));
+        transaction.setRecipientAmount((double) rawTransaction.get("recipientAmount"));
+        transaction.setExchangeRate((double) rawTransaction.get("exchangeRate"));
+        transaction.setPayeeFees((double) rawTransaction.get("payeeFees"));
+        transaction.setPayeeTotalAmountCharged((double) rawTransaction.get("payeeTotalAmountCharged"));
+        return null;
+    }
 }

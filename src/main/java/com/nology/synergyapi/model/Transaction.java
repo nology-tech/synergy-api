@@ -10,7 +10,7 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    //@Column(name = "tid", nullable = false)
+    @Column(name = "txnId", nullable = false)
 
     private Long txnId;
     @OneToOne( fetch = FetchType.LAZY)
