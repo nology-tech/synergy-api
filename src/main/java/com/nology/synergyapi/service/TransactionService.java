@@ -37,7 +37,7 @@ public class TransactionService {
         return account.getTransactions();
     }
 
-//    public Transaction createTransaction(Object transaction) {
+//    public Transaction createTransaction(RequestBody transaction) {
 //        transactionRepository.save(transaction);
 //        return transaction;
 //    }
