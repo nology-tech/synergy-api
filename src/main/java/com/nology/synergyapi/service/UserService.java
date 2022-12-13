@@ -43,4 +43,17 @@ public class UserService {
         return user;
     }
 
+    public User createUserContact (String userID, UserAccount userAccount) {
+        User user = new User(userAccount.getFirstName(), userAccount.getLastName(), userAccount.getEmail(),
+                userAccount.getAddress_houseNum(), userAccount.getAddress_streetName(), userAccount.getAddress_city(), userAccount.getAddress_state(), userAccount.getAddress_postCode(),
+                userAccount.getContactFlag());
+
+        userRepo.save(user);
+
+        Account account = new Account(userAccount.getSortCode(), userAccount.getCurrencyID(), userAccount.getAccountType(), user);
+
+        accountRepo.save(account);
+
+        return user;
+    }
 }

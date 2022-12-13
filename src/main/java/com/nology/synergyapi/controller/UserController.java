@@ -51,6 +51,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
+    @PostMapping("/users")
+    public ResponseEntity<User> createUserContact(@RequestBody UserAccount contact){
+        User user = userService.createUserAndAccount(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
     @PostMapping("/users/{id}")
     public ResponseEntity<User> createUserById(@RequestBody User contact){
         userRepo.save(contact);
