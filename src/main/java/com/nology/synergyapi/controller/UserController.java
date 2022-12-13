@@ -2,7 +2,9 @@ package com.nology.synergyapi.controller;
 
 import com.nology.synergyapi.repository.UserRepository;
 import com.nology.synergyapi.model.User;
+import com.nology.synergyapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ public class UserController {
     @Autowired
     UserRepository userRepo;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/users")
     public ResponseEntity <List<User>> getAllUsers() throws IOException {
         return ResponseEntity.status(HttpStatus.OK).body(userRepo.findAll());
@@ -34,16 +39,15 @@ public class UserController {
         }
     }
 
-    @PostMapping("/createContact")
-    public ResponseEntity<String> createUser(@RequestBody User contact){
+    @GetMapping("/userbyemail")
+    public ResponseEntity <User> getUserByEmail (@RequestParam String email) throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserByEmail(email,userRepo.findAll()));
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody User contact){
         userRepo.save(contact);
-        try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(contact.toString()+ " added");
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.toString());
-        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(contact);
     }
 
     //Delete a greeting
