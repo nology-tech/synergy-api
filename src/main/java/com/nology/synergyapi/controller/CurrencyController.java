@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin(origins  =  "http://localhost:3000")
+@CrossOrigin(origins  =  "${frontend.url}")
 public class CurrencyController {
     @GetMapping("/currencies")
     public static List<Currency> getAllCurrencies() throws IOException {
