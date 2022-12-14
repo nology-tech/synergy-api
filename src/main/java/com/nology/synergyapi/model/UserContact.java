@@ -25,8 +25,8 @@ public class UserContact {
     @JoinColumn(name = "contactId")
     private User user2;
 
-//    public UserContact() {
-//    }
+    public UserContact() {
+    }
 
 //    @ManyToOne
 //    @JoinColumn(name="contactId")
