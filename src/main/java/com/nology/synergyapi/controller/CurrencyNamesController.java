@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @RestController
-@CrossOrigin(origins  =  "http://localhost:3000")
+@CrossOrigin(origins  =  "${frontend.url}")
 public class CurrencyNamesController {
     @GetMapping("/currencynames")
     public String[][] getAllCurrencyNames() throws IOException {

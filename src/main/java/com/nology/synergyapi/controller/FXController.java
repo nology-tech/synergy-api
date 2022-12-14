@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 
     @RestController
-    @CrossOrigin(origins  =  "http://localhost:3000")
+    @CrossOrigin(origins  =  "${frontend.url}")
     public class FXController {
         @GetMapping("/fxrates")
         public HashMap getAllFXRates() throws IOException {
