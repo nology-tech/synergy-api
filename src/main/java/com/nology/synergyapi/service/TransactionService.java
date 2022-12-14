@@ -8,6 +8,7 @@ import com.nology.synergyapi.model.User;
 import com.nology.synergyapi.repository.AccountRepository;
 import com.nology.synergyapi.repository.TransactionRepository;
 import com.nology.synergyapi.repository.UserRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,18 +41,18 @@ public class TransactionService {
         return account.getTransactions();
     }
 
-
     public Transaction createTransaction(JSONObject rawTransaction) {
         Account payeeAccount = accountRepository.findByAccountID(((Integer)rawTransaction.get("payeeAccountId")).longValue());
         Account recipientAccount = accountRepository.findByAccountID(((Integer)rawTransaction.get("recipientAccountId")).longValue());
         Transaction transaction = new Transaction();
         transaction.setPayeeAccount(payeeAccount);
         transaction.setRecipientAccount(recipientAccount);
-        transaction.setPayeeAmount((Double)rawTransaction.get("payeeAmount"));
-        transaction.setRecipientAmount((Double)rawTransaction.get("recipientAmount"));
-        transaction.setExchangeRate((Double)rawTransaction.get("txnExchangeRate"));
-        transaction.setPayeeFees((Double)rawTransaction.get("payeeFees"));
-        transaction.setPayeeTotalAmountCharged((Double)rawTransaction.get("payeeTotalAmountCharged"));
+        transaction.setPayeeAmount(((Integer) rawTransaction.get("payeeAmount")).doubleValue());
+        transaction.setRecipientAmount(((Integer)  rawTransaction.get("recipientAmount")).doubleValue());
+        transaction.setExchangeRate((Double) rawTransaction.get("txnExchangeRate"));
+        //transaction.setPayeeFees(((Integer) rawTransaction.get("payeeFees")).doubleValue());
+        transaction.setPayeeFees(0.00);
+        transaction.setPayeeTotalAmountCharged(((Integer) rawTransaction.get("payeeTotalAmountCharged")).doubleValue());
         Date date = new Timestamp(new Date().getTime());
         transaction.setDateCreated(date);
         transactionRepository.save(transaction);
