@@ -8,7 +8,6 @@ import com.nology.synergyapi.model.User;
 import com.nology.synergyapi.repository.AccountRepository;
 import com.nology.synergyapi.repository.TransactionRepository;
 import com.nology.synergyapi.repository.UserRepository;
-
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,18 +40,21 @@ public class TransactionService {
         return account.getTransactions();
     }
 
+
     public Transaction createTransaction(JSONObject rawTransaction) {
-        Account payeeAccount = accountRepository.findById((long) rawTransaction.get("payeeAccountId")).orElse(null);
-        Account recipientAccount = accountRepository.findById((long) rawTransaction.get("recipientAccount")).orElse(null);
+        Account payeeAccount = accountRepository.findByAccountID(((Integer)rawTransaction.get("payeeAccountId")).longValue());
+        Account recipientAccount = accountRepository.findByAccountID(((Integer)rawTransaction.get("recipientAccountId")).longValue());
         Transaction transaction = new Transaction();
         transaction.setPayeeAccount(payeeAccount);
         transaction.setRecipientAccount(recipientAccount);
-        transaction.setPayeeAmount((double) rawTransaction.get("payeeAmount"));
-        transaction.setRecipientAmount((double) rawTransaction.get("recipientAmount"));
-        transaction.setExchangeRate((double) rawTransaction.get("exchangeRate"));
-        transaction.setPayeeFees((double) rawTransaction.get("payeeFees"));
-        transaction.setPayeeTotalAmountCharged((double) rawTransaction.get("payeeTotalAmountCharged"));
-        transaction.setDateCreated(new Timestamp(new Date().getTime()));
-        return null;
+        transaction.setPayeeAmount((Double)rawTransaction.get("payeeAmount"));
+        transaction.setRecipientAmount((Double)rawTransaction.get("recipientAmount"));
+        transaction.setExchangeRate((Double)rawTransaction.get("txnExchangeRate"));
+        transaction.setPayeeFees((Double)rawTransaction.get("payeeFees"));
+        transaction.setPayeeTotalAmountCharged((Double)rawTransaction.get("payeeTotalAmountCharged"));
+        Date date = new Timestamp(new Date().getTime());
+        transaction.setDateCreated(date);
+        transactionRepository.save(transaction);
+        return transaction;
     }
 }

@@ -1,21 +1,8 @@
 package com.nology.synergyapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "userID", nullable = false)
+public class UserAccount {
 
     private Long userID;
     private String firstName;
@@ -28,30 +15,11 @@ public class User {
     private String address_postCode;
     private Boolean isContactFlag;
     private Date createDateTime;
+    private String accountType;
+    private String sortCode;
+    private String currencyID;
 
-    @OneToOne( mappedBy = "user")
-    @JsonIgnore
-    private Account account;
-
-    @OneToMany( mappedBy = "user")
-    @JsonIgnore
-    List<UserContact> contacts;
-
-    @OneToMany( mappedBy = "user2")
-    @JsonIgnore
-    List<UserContact> users;
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "usercontacts",
-//        joinColumns = { @JoinColumn(name = "userID", referencedColumnName = "userID")},
-//            inverseJoinColumns = { @JoinColumn(name = "contactUserID", referencedColumnName = "userID")})
-//    private User user;
-
-    public User() {
-        this.createDateTime= new Timestamp(new Date().getTime());
-    }
-
-    public User(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode) {
+    public UserAccount(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag, Date createDateTime, String accountType, String sortCode, String currencyID) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,21 +30,20 @@ public class User {
         this.address_state = address_state;
         this.address_postCode = address_postCode;
         this.isContactFlag = isContactFlag;
-        this.createDateTime = new Timestamp(new Date().getTime());
+        this.createDateTime = createDateTime;
+        this.accountType = accountType;
+        this.sortCode = sortCode;
+        this.currencyID = currencyID;
     }
 
-    public User(String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address_houseNum = address_houseNum;
-        this.address_streetName = address_streetName;
-        this.address_city = address_city;
-        this.address_state = address_state;
-        this.address_postCode = address_postCode;
-        this.isContactFlag = isContactFlag;
-        this.createDateTime = new Timestamp(new Date().getTime());
+    public Long getUserID() {
+        return userID;
     }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -157,9 +124,33 @@ public class User {
         this.createDateTime = createDateTime;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public String getSortCode() {
+        return sortCode;
+    }
+
+    public void setSortCode(String sortCode) {
+        this.sortCode = sortCode;
+    }
+
+    public String getCurrencyID() {
+        return currencyID;
+    }
+
+    public void setCurrencyID(String currencyID) {
+        this.currencyID = currencyID;
+    }
+
     @Override
     public String toString() {
-        return "{" +
+        return "UserAccount{" +
                 "userID=" + userID +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -171,26 +162,9 @@ public class User {
                 ", address_postCode='" + address_postCode + '\'' +
                 ", isContactFlag=" + isContactFlag +
                 ", createDateTime=" + createDateTime +
+                ", accountType='" + accountType + '\'' +
+                ", sortCode='" + sortCode + '\'' +
+                ", currencyID='" + currencyID + '\'' +
                 '}';
-    }
-
-    public Long getuserID() {
-        return userID;
-    }
-
-    public void setuserID(Long userID) {
-        this.userID = userID;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public List<UserContact> getContacts() {
-        return contacts;
     }
 }

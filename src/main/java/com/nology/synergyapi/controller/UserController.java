@@ -1,5 +1,6 @@
 package com.nology.synergyapi.controller;
 
+import com.nology.synergyapi.model.UserAccount;
 import com.nology.synergyapi.repository.UserRepository;
 import com.nology.synergyapi.model.User;
 import com.nology.synergyapi.service.UserService;
@@ -45,7 +46,19 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User contact){
+    public ResponseEntity<User> createUser(@RequestBody UserAccount contact){
+        User user = userService.createUserAndAccount(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
+    @PostMapping("/users/contacts")
+    public ResponseEntity<User> createUserContact(@RequestBody UserAccount contact){
+        User user = userService.createUserAndAccount(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
+    @PostMapping("/users/{id}")
+    public ResponseEntity<User> createUserById(@RequestBody User contact){
         userRepo.save(contact);
         return ResponseEntity.status(HttpStatus.CREATED).body(contact);
     }
