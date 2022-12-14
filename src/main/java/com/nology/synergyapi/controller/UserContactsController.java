@@ -3,10 +3,12 @@ package com.nology.synergyapi.controller;
 import com.nology.synergyapi.model.UserContact;
 import com.nology.synergyapi.model.UserContactBank;
 import com.nology.synergyapi.repository.UserContactsRepository;
+import com.nology.synergyapi.repository.UserRepository;
 import com.nology.synergyapi.service.UserContactsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -19,14 +21,16 @@ import java.util.List;
 public class UserContactsController {
     @Autowired
     UserContactsService userContactsService;
+    @Autowired
     UserContactsRepository userContactsRepo;
+    @Autowired
+    private UserRepository userRepository;
 
 
-
-//    @GetMapping("/userContacts")
-//    public ResponseEntity <List<UserContact>> getAllUserContacts() throws IOException {
-//        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll());
-//    }
+    @GetMapping("/userContacts")
+    public ResponseEntity <List<UserContact>> getAllUserContacts() throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll());
+    }
 //    ADD COMMENT HERE!
 //    @GetMapping("/userContacts/{uid}")
 //    public ResponseEntity <List<UserContact>> getUserContactsByID (@PathVariable Long uid) throws IOException {
@@ -38,24 +42,13 @@ public class UserContactsController {
         return ResponseEntity.status(HttpStatus.OK).body(userContactsService.getUserContactsWithBank(userId));
     }
 
+@Transactional
+    @DeleteMapping("/deleteUserContact/{userID}/{contactID}")
+    public String deleteUserContact(@PathVariable Long userID, @PathVariable Long contactID){
 
-
-    @PostMapping("/UserContacts")
-    public ResponseEntity<String> createUserContacts(@RequestBody UserContact userContact){
-        userContactsRepo.save(userContact);
-        try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(userContact.toString()+ " added");
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.toString());
-        }
-    }
-
-    @DeleteMapping("/userContacts/{ContactId}")
-    public String deleteUserContact(@PathVariable Long ContactId){
-        userContactsRepo.delete(userContactsRepo.findByUserContactId(ContactId));
-        return "Users with id: "+ ContactId + " deleted";
+//        userContactsService.deleteUser(contactID);
+        userContactsRepo.delete(userContactsService.deleteUserContact(userID, contactID));
+        return "Users with id: "+ contactID + " deleted";
     }
 
 }
