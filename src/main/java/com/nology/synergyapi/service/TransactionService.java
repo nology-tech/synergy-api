@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,6 +52,7 @@ public class TransactionService {
         transaction.setExchangeRate((double) rawTransaction.get("exchangeRate"));
         transaction.setPayeeFees((double) rawTransaction.get("payeeFees"));
         transaction.setPayeeTotalAmountCharged((double) rawTransaction.get("payeeTotalAmountCharged"));
+        transaction.setDateCreated(new Timestamp(new Date().getTime()));
         return null;
     }
 }
