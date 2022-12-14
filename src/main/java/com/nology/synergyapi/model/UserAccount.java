@@ -5,6 +5,7 @@ import java.util.Date;
 public class UserAccount {
 
     private Long userID;
+    private Long accountID;
     private String firstName;
     private String lastName;
     private String email;
@@ -19,8 +20,9 @@ public class UserAccount {
     private String sortCode;
     private String currencyID;
 
-    public UserAccount(Long userID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag, Date createDateTime, String accountType, String sortCode, String currencyID) {
+    public UserAccount(Long userID, Long accountID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag, Date createDateTime, String accountType, String sortCode, String currencyID) {
         this.userID = userID;
+        this.accountID= accountID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -34,6 +36,14 @@ public class UserAccount {
         this.accountType = accountType;
         this.sortCode = sortCode;
         this.currencyID = currencyID;
+    }
+
+    public Long getAccountID() {
+        return accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     public Long getUserID() {
@@ -152,6 +162,7 @@ public class UserAccount {
     public String toString() {
         return "UserAccount{" +
                 "userID=" + userID +
+                ", accountID=" + accountID +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
