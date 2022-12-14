@@ -2,6 +2,7 @@ package com.nology.synergyapi.model;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -10,7 +11,7 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    //@Column(name = "tid", nullable = false)
+    @Column(name = "txnId", nullable = false)
 
     private Long txnId;
     @OneToOne( fetch = FetchType.LAZY)
@@ -41,6 +42,7 @@ public class Transaction {
         this.payeeTotalAmountCharged = payeeTotalAmountCharged;
         this.dateCreated = dateCreated;
         this.exchangeRate = exchangeRate;
+        this.dateCreated = dateCreated;
     }
 
     public Account getRecipientAccount() {

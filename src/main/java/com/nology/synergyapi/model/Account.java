@@ -64,6 +64,8 @@ public class Account {
         this.currencyID = currencyID;
         this.accountType = accountType;
         this.user = user;
+        this.accountBalance = 10000;
+        this.accountStatus = "Active";
     }
 
     public long getAccountID() {

@@ -7,12 +7,13 @@ import java.util.List;
 @Entity
 public class UserContact {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-//    @Column(name = "userContactId", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "userContactId", nullable = false)
+    private Long userContactId;
 
-    @EmbeddedId
-    UserContactKey userContactId;
+//    @EmbeddedId
+//    UserContactKey userContactId;
 
     @ManyToOne
     @MapsId("userID")
@@ -38,6 +39,20 @@ public class UserContact {
         this.user2 = user2;
     }
 
+    public UserContact(Long userContactId, User user, User user2) {
+        this.userContactId = userContactId;
+        this.user = user;
+        this.user2 = user2;
+    }
+
+    public Long getUserContactId() {
+        return userContactId;
+    }
+
+    public void setUserContactId(Long userContactId) {
+        this.userContactId = userContactId;
+    }
+
     public User getUser() {
         return user;
     }
@@ -57,7 +72,8 @@ public class UserContact {
     @Override
     public String toString() {
         return "UserContact{" +
-                "user=" + user +
+                "userContactId=" + userContactId +
+                ", user=" + user +
                 ", user2=" + user2 +
                 '}';
     }

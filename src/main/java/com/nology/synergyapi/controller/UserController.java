@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins  = {"http://localhost:3000"})
+@CrossOrigin(origins  = "${frontend.url}")
 //@Entity
 //@Table(name = "ARTICLES")
 public class UserController {
@@ -46,16 +46,23 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody UserAccount contact){
-        User user = userService.createUserAndAccount(contact);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    public ResponseEntity<UserAccount> createUser(@RequestBody UserAccount contact){
+        UserAccount userAccount = userService.createUserAndAccount(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userAccount);
     }
 
     @PostMapping("/users/{id}")
-    public ResponseEntity<User> createUserById(@RequestBody User contact){
-        userRepo.save(contact);
-        return ResponseEntity.status(HttpStatus.CREATED).body(contact);
+    public ResponseEntity<UserAccount> createUserContact(@PathVariable Long id, @RequestBody UserAccount contact){
+        UserAccount userAccount = userService.createUserAndAccount(contact);
+        userService.createUserContact(id, userAccount.getUserID());
+        return ResponseEntity.status(HttpStatus.CREATED).body(userAccount);
     }
+
+//    @PostMapping("/users/{id}")
+//    public ResponseEntity<User> createUserById(@RequestBody User contact){
+//        userRepo.save(contact);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(contact);
+//    }
 
     //Delete a greeting
     @DeleteMapping("/users/{id}")

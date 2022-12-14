@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @RestController
-    @CrossOrigin(origins  =  "http://localhost:3000")
+    @CrossOrigin(origins  =  "${frontend.url}")
     public class BankController {
     @GetMapping("/banks")
     public List<Bank> getAllBanks() throws IOException {
