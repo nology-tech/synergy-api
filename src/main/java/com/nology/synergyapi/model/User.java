@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -33,19 +30,15 @@ public class User {
     @JsonIgnore
     private Account account;
 
-    @OneToMany( mappedBy = "user")
+    @ManyToMany
+    @JoinTable(name = "usercontact", joinColumns = @JoinColumn(name="userID"), inverseJoinColumns = @JoinColumn(name="contactID"))
     @JsonIgnore
-    List<UserContact> contacts;
+    private Set<User> contacts = new HashSet<>();
 
-    @OneToMany( mappedBy = "user2")
+    @ManyToMany
+    @JoinTable(name = "usercontact", joinColumns = @JoinColumn(name="contactID"), inverseJoinColumns = @JoinColumn(name="userID"))
     @JsonIgnore
-    List<UserContact> users;
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "usercontacts",
-//        joinColumns = { @JoinColumn(name = "userID", referencedColumnName = "userID")},
-//            inverseJoinColumns = { @JoinColumn(name = "contactUserID", referencedColumnName = "userID")})
-//    private User user;
+    private Set<User> contactOf = new HashSet<>();
 
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
@@ -190,7 +183,9 @@ public class User {
         this.account = account;
     }
 
-    public List<UserContact> getContacts() {
-        return contacts;
+    public Set<User> getContacts() {return contacts;}
+
+    public void setContacts(Set<User> contacts) {
+        this.contacts = contacts;
     }
 }
