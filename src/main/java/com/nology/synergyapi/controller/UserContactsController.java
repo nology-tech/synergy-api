@@ -1,6 +1,5 @@
 package com.nology.synergyapi.controller;
 
-import com.nology.synergyapi.model.UserContact;
 import com.nology.synergyapi.model.UserContactBank;
 //import com.nology.synergyapi.repository.UserContactsRepository;
 import com.nology.synergyapi.service.UserContactsService;
@@ -14,24 +13,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins  = "${frontend.url}")
-//@Entity
-//@Table(name = "ARTICLES")
 public class UserContactsController {
     @Autowired
     UserContactsService userContactsService;
-//    UserContactsRepository userContactsRepo;
-
-
-
-//    @GetMapping("/userContacts")
-//    public ResponseEntity <List<UserContact>> getAllUserContacts() throws IOException {
-//        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll());
-//    }
-//    ADD COMMENT HERE!
-//    @GetMapping("/userContacts/{uid}")
-//    public ResponseEntity <List<UserContact>> getUserContactsByID (@PathVariable Long uid) throws IOException {
-//        return ResponseEntity.status(HttpStatus.OK).body(userContactsRepo.findAll().stream().filter(userContact->userContact.getUserID().equals(uid)).toList());
-//    }
 
     @GetMapping("/contacts/{userId}")
     public  ResponseEntity <List<UserContactBank>> getContactsByUserID (@PathVariable Long userId) throws IOException {

@@ -30,14 +30,6 @@ public class User {
     @JsonIgnore
     private Account account;
 
-//    @OneToMany( mappedBy = "user")
-//    @JsonIgnore
-//    List<UserContact> contacts;
-//
-//    @OneToMany( mappedBy = "user2")
-//    @JsonIgnore
-//    List<UserContact> users;
-
     @ManyToMany
     @JoinTable(name = "usercontact", joinColumns = @JoinColumn(name="userID"), inverseJoinColumns = @JoinColumn(name="contactID"))
     @JsonIgnore
@@ -47,12 +39,6 @@ public class User {
     @JoinTable(name = "usercontact", joinColumns = @JoinColumn(name="contactID"), inverseJoinColumns = @JoinColumn(name="userID"))
     @JsonIgnore
     private Set<User> contactOf = new HashSet<>();
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "usercontacts",
-//        joinColumns = { @JoinColumn(name = "userID", referencedColumnName = "userID")},
-//            inverseJoinColumns = { @JoinColumn(name = "contactUserID", referencedColumnName = "userID")})
-//    private User user;
 
     public User() {
         this.createDateTime= new Timestamp(new Date().getTime());
@@ -202,7 +188,4 @@ public class User {
     public void setContacts(Set<User> contacts) {
         this.contacts = contacts;
     }
-//    public List<UserContact> getContacts() {
-//        return contacts;
-//    }
 }

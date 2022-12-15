@@ -47,22 +47,28 @@ public class UserService {
         return newUserAccount;
     }
 
-    public void createUserContact (Long userID, Long contactUserId) {
+    public String createUserContact (Long userID, Long contactUserId) {
         System.out.println("UserID:" + userID + " ContactUserID: " + contactUserId);
         User user = userRepo.findByUserID(userID);
 
-        Set<User> contacts = new HashSet<User>();
         User contact = userRepo.findByUserID(contactUserId);
+        Set<User> contacts = user.getContacts();
         contacts.add(contact);
         user.setContacts(contacts);
-//        User user2 = userRepo.findByUserID(contactUserId);
-//        System.out.println(user1);
-//        System.out.println(user2);
-//        UserContact userContact = new UserContact(userRepo.findByUserID(userID),userRepo.findByUserID(contactUserId) );
-//        UserContact userContact = new UserContact(userID, contactUserId);
-        System.out.println("userContact: " + contacts);
-        System.out.println("user: " + user);
         userRepo.save(user);
-        System.out.println("EXITING createUserContact");
+        return "UserContact " + contactUserId + " added for User " + userID;
     }
+
+    public String deleteUserContact (Long userID, Long contactUserId) {
+        System.out.println("UserID:" + userID + " ContactUserID: " + contactUserId);
+        User user = userRepo.findByUserID(userID);
+
+        User contact = userRepo.findByUserID(contactUserId);
+        Set<User> contacts = user.getContacts();
+        contacts.remove(contact);
+        user.setContacts(contacts);
+        userRepo.save(user);
+        return "UserContact " + contactUserId + " deleted from User " + userID;
+    }
+
 }
