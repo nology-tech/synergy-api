@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.nology.synergyapi.model.*;
 import com.nology.synergyapi.repository.AccountRepository;
+import com.nology.synergyapi.repository.UserContactsRepository;
 import com.nology.synergyapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.nology.synergyapi.model.Account;
-import com.nology.synergyapi.model.Bank;
-import com.nology.synergyapi.model.User;
-import com.nology.synergyapi.model.UserContactBank;
 
 @Service
 public class UserContactsService {
@@ -23,6 +21,8 @@ public class UserContactsService {
 
     @Autowired
     AccountRepository accountRepository;
+    @Autowired
+    private UserContactsRepository userContactsRepository;
 
 
     public List<UserContactBank> getUserContactsWithBank(Long userId) {
@@ -46,6 +46,10 @@ public class UserContactsService {
 
        return userContacts;
     }
-
+    public UserContact deleteUserContact(Long userID, Long contactID) {
+        List<UserContact> allContacts = userContactsRepository.findAll().stream().filter(userContact->userContact.getUser().getuserID().equals(userID)).toList();
+        UserContact delContact = allContacts.stream().filter(contact->contact.getUser2().getuserID().equals(contactID)).findFirst().orElse(null);
+        return delContact;
+    }
     
 }
