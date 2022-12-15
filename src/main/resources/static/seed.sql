@@ -17,15 +17,15 @@ sysdate() ),
 (1000004,  'Monica',  'Torres',  'monica@test.com',  '104',
 'Columbus Circle',  'New York',  'NY',  '10019',  true,  sysdate() );
 
-INSERT INTO userContact (userid, contactid) VALUES
-(1000000,  1234560),
-(1000000,  1234561),
-(1000000,  1234562),
-(1000000, 1000002),
-(1000002, 1234560),
-(1000002, 1234561),
-(1234560, 1000002),
-(1000002, 1000004);
+INSERT INTO userContact (userID, contactId, userContactId) VALUES
+(1000000,  1234560, 1),
+(1000000,  1234561, 2),
+(1000000,  1234562, 3),
+(1000000, 1000002, 4),
+(1000002, 1234560, 5),
+(1000002, 1234561, 6),
+(1234560, 1000002, 7),
+(1000002, 1000004, 8);
 
 INSERT INTO account (accountID,  sortCode,  userID, currencyID, IBAN,
 accountType,  accountStatus,  accountBalance,  dateCreated)
