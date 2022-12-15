@@ -48,7 +48,7 @@ public class TransactionService {
         transaction.setPayeeAccount(payeeAccount);
         transaction.setRecipientAccount(recipientAccount);
         transaction.setPayeeAmount(((Integer) rawTransaction.get("payeeAmount")).doubleValue());
-        transaction.setRecipientAmount(((Integer)  rawTransaction.get("recipientAmount")).doubleValue());
+        transaction.setRecipientAmount(((Double)  rawTransaction.get("recipientAmount")).doubleValue());
         transaction.setExchangeRate((Double) rawTransaction.get("txnExchangeRate"));
         //transaction.setPayeeFees(((Integer) rawTransaction.get("payeeFees")).doubleValue());
         transaction.setPayeeFees(0.00);
@@ -56,6 +56,8 @@ public class TransactionService {
         Date date = new Timestamp(new Date().getTime());
         transaction.setDateCreated(date);
         transactionRepository.save(transaction);
+        payeeAccount.setAccountBalance(payeeAccount.getAccountBalance()-((Integer) rawTransaction.get("payeeAmount")).doubleValue());
+        accountRepository.save(payeeAccount);
         return transaction;
     }
 }
