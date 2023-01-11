@@ -52,10 +52,22 @@ public class UserController {
     }
 
     @PostMapping("/users/{id}")
-    public ResponseEntity<UserAccount> createUserContact(@PathVariable Long id, @RequestBody UserAccount contact){
+    public ResponseEntity<UserAccount> createUserAndContact(@PathVariable Long id, @RequestBody UserAccount contact){
         UserAccount userAccount = userService.createUserAndAccount(contact);
         userService.createUserContact(id, userAccount.getUserID());
         return ResponseEntity.status(HttpStatus.CREATED).body(userAccount);
+    }
+
+    @PostMapping("/users/{id}/{contactId}")
+    public ResponseEntity<String> createUserContact(@PathVariable Long id, @PathVariable Long contactId){
+        String response = userService.createUserContact(id, contactId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @DeleteMapping("/users/{id}/{contactId}")
+    public ResponseEntity<String> deleteUserContact(@PathVariable Long id, @PathVariable Long contactId){
+        String response = userService.deleteUserContact(id, contactId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
 //    @PostMapping("/users/{id}")

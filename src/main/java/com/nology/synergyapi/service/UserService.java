@@ -2,12 +2,14 @@ package com.nology.synergyapi.service;
 
 import com.nology.synergyapi.model.*;
 import com.nology.synergyapi.repository.AccountRepository;
-import com.nology.synergyapi.repository.UserContactsRepository;
+//import com.nology.synergyapi.repository.UserContactsRepository;
 import com.nology.synergyapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -15,8 +17,8 @@ public class UserService {
     @Autowired
     UserRepository userRepo;
 
-    @Autowired
-    UserContactsRepository userContactRepo;
+//    @Autowired
+//    UserContactsRepository userContactRepo;
 
     @Autowired
     AccountRepository accountRepo;
@@ -45,15 +47,28 @@ public class UserService {
         return newUserAccount;
     }
 
-    public void createUserContact (Long userID, Long contactUserId) {
+    public String createUserContact (Long userID, Long contactUserId) {
         System.out.println("UserID:" + userID + " ContactUserID: " + contactUserId);
-        User user1 = userRepo.findByUserID(userID);
-        User user2 = userRepo.findByUserID(contactUserId);
-        System.out.println(user1);
-        System.out.println(user2);
-        UserContact userContact = new UserContact(userRepo.findByUserID(userID),userRepo.findByUserID(contactUserId) );
-        System.out.println("userContact: " + userContact);
-        userContactRepo.save(userContact);
-        System.out.println("EXITING createUserContact");
+        User user = userRepo.findByUserID(userID);
+
+        User contact = userRepo.findByUserID(contactUserId);
+        Set<User> contacts = user.getContacts();
+        contacts.add(contact);
+        user.setContacts(contacts);
+        userRepo.save(user);
+        return "UserContact " + contactUserId + " added for User " + userID;
     }
+
+    public String deleteUserContact (Long userID, Long contactUserId) {
+        System.out.println("UserID:" + userID + " ContactUserID: " + contactUserId);
+        User user = userRepo.findByUserID(userID);
+
+        User contact = userRepo.findByUserID(contactUserId);
+        Set<User> contacts = user.getContacts();
+        contacts.remove(contact);
+        user.setContacts(contacts);
+        userRepo.save(user);
+        return "UserContact " + contactUserId + " deleted from User " + userID;
+    }
+
 }
