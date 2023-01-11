@@ -1,2 +1,2 @@
-runtime: java19
+runtime: java17
 service: back-end
