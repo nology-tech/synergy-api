@@ -1,18 +1,21 @@
 package com.nology.synergyapi.controller;
 
 import com.nology.synergyapi.model.Account;
+import com.nology.synergyapi.model.User;
 import com.nology.synergyapi.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "${frontend.url}")
+
 public class AccountController {
 
     @Autowired
@@ -20,8 +23,13 @@ public class AccountController {
 
 
     @GetMapping("/account/{id}")
-    public ResponseEntity<Optional<Account>> getAccountById(@PathVariable long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(repository.findById(id));
+    public Account getAccountById(@PathVariable long id) {
+        return repository.findByUserID(id);
+        }
+
+    @GetMapping("/accountbyuser")
+    public Account getAccountByUser (@RequestParam long userid) throws IOException {
+        return repository.findByUserID(userid);
     }
 
     // INDEX route (GET ALL)
