@@ -31,12 +31,12 @@ public class User {
     private Account account;
 
     @ManyToMany
-    @JoinTable(name = "usercontact", joinColumns = @JoinColumn(name="userID"), inverseJoinColumns = @JoinColumn(name="contactID"))
+    @JoinTable(name = "user_contact", joinColumns = @JoinColumn(name="userID"), inverseJoinColumns = @JoinColumn(name="contactID"))
     @JsonIgnore
     private Set<User> contacts = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "usercontact", joinColumns = @JoinColumn(name="contactID"), inverseJoinColumns = @JoinColumn(name="userID"))
+    @JoinTable(name = "user_contact", joinColumns = @JoinColumn(name="contactID"), inverseJoinColumns = @JoinColumn(name="userID"))
     @JsonIgnore
     private Set<User> contactOf = new HashSet<>();
 

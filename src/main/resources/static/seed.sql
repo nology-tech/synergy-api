@@ -17,7 +17,7 @@ sysdate() ),
 (1000004,  'Monica',  'Torres',  'monica@test.com',  '104',
 'Columbus Circle',  'New York',  'NY',  '10019',  true,  sysdate() );
 
-INSERT INTO userContact (userid, contactid) VALUES
+INSERT INTO user_contact (userid, contactid) VALUES
 (1000000,  1234560),
 (1000000,  1234561),
 (1000000,  1234562),
