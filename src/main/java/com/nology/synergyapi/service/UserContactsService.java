@@ -33,12 +33,16 @@ public class UserContactsService {
             try {
                 bank = bankService.getBank(account.getSortCode());
             } catch (IOException e) {
+                //System.out.println("found a contact without a bank");
                 throw new RuntimeException(e);
             }
-            UserContactBank userContact = new UserContactBank(contact.getFirstName(), contact.getLastName(),
-                    bank.getBankName(), bank.getBankLogo(), 
-                    account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID(), account.getAccountType(), contact.getuserID());
-            userContacts.add(userContact);
+            if (bank!=null) {
+                UserContactBank userContact = new UserContactBank(contact.getFirstName(), contact.getLastName(),
+                        bank.getBankName(), bank.getBankLogo(),
+                        account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID(), account.getAccountType(), contact.getuserID());
+                userContacts.add(userContact);
+            }
+
        });
 
        return userContacts;
@@ -56,10 +60,12 @@ public class UserContactsService {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            UserContactBank userContact = new UserContactBank(contact.getFirstName(), contact.getLastName(),
-                    bank.getBankName(), bank.getBankLogo(),
-                    account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID(), account.getAccountType(), contact.getuserID());
-            userContacts.add(userContact);
+            if (bank!=null) {
+                UserContactBank userContact = new UserContactBank(contact.getFirstName(), contact.getLastName(),
+                        bank.getBankName(), bank.getBankLogo(),
+                        account.getSortCode(), account.getIBAN(), account.getAccountID(), account.getCurrencyID(), account.getAccountType(), contact.getuserID());
+                userContacts.add(userContact);
+            }
         });
 
         return userContacts;
