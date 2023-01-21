@@ -32,6 +32,17 @@ public class UserService {
 
     }
 
+    public UserAccount getUserAccountByEmail (String email, List<User> allUsers) {
+        User user = getUserByEmail(email, allUsers);
+        Account account = accountRepo.findByUserID(user.getuserID());
+
+        UserAccount userAccount = new UserAccount(user.getuserID(), account.getAccountID(), user.getFirstName(),
+                user.getLastName(), user.getEmail(), account.getAccountType(), account.getSortCode(), account.getCurrencyID(), account.getAccountBalance());
+
+        return userAccount;
+
+    }
+
     public UserAccount createUserAndAccount (UserAccount userAccount) {
         User user = new User(userAccount.getFirstName(), userAccount.getLastName(), userAccount.getEmail(),
                 userAccount.getAddress_houseNum(), userAccount.getAddress_streetName(), userAccount.getAddress_city(), userAccount.getAddress_state(), userAccount.getAddress_postCode(),
