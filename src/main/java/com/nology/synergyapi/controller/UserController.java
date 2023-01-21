@@ -41,8 +41,8 @@ public class UserController {
     }
 
     @GetMapping("/userbyemail")
-    public ResponseEntity <User> getUserByEmail (@RequestParam String email) throws IOException {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserByEmail(email,userRepo.findAll()));
+    public ResponseEntity <UserAccount> getUserByEmail (@RequestParam String email) throws IOException {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getUserAccountByEmail(email,userRepo.findAll()));
     }
 
     @PostMapping("/users")

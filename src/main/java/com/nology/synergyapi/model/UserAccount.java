@@ -19,6 +19,7 @@ public class UserAccount {
     private String accountType;
     private String sortCode;
     private String currencyID;
+    private double accountBalance;
 
     public UserAccount(Long userID, Long accountID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag, Date createDateTime, String accountType, String sortCode, String currencyID) {
         this.userID = userID;
@@ -36,6 +37,18 @@ public class UserAccount {
         this.accountType = accountType;
         this.sortCode = sortCode;
         this.currencyID = currencyID;
+        }
+
+    public UserAccount(Long userID, Long accountID, String firstName, String lastName, String email, String accountType, String sortCode, String currencyID, double accountBalance) {
+        this.userID = userID;
+        this.accountID= accountID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.accountType = accountType;
+        this.sortCode = sortCode;
+        this.currencyID = currencyID;
+        this.accountBalance = accountBalance;
     }
 
     public Long getAccountID() {
@@ -158,6 +171,14 @@ public class UserAccount {
         this.currencyID = currencyID;
     }
 
+    public double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
     @Override
     public String toString() {
         return "UserAccount{" +
@@ -176,6 +197,7 @@ public class UserAccount {
                 ", accountType='" + accountType + '\'' +
                 ", sortCode='" + sortCode + '\'' +
                 ", currencyID='" + currencyID + '\'' +
+                ", accountBalance='" + accountBalance + '\'' +
                 '}';
     }
 }
