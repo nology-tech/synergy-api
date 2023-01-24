@@ -51,6 +51,9 @@ public class UserAccount {
         this.accountBalance = accountBalance;
     }
 
+    public UserAccount() {
+    }
+
     public Long getAccountID() {
         return accountID;
     }
@@ -143,7 +146,7 @@ public class UserAccount {
         return createDateTime;
     }
 
-    public void setCreateDateTime(Date createDateTime) {
+    public void setCreateDateTime() {
         this.createDateTime = createDateTime;
     }
 
