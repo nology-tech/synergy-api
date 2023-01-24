@@ -51,6 +51,9 @@ public class UserAccount {
         this.accountBalance = accountBalance;
     }
 
+    public UserAccount() {
+    }
+
     public Long getAccountID() {
         return accountID;
     }

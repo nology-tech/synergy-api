@@ -67,6 +67,7 @@ public class Account {
         this.user = user;
         this.accountBalance = 10000;
         this.accountStatus = "Active";
+        this.dateCreated = new Timestamp(new Date().getTime());
     }
 
     public long getAccountID() {
