@@ -49,12 +49,12 @@ public class UserService {
                 userAccount.getContactFlag());
         userRepo.save(user);
 
-        Account account = new Account(userAccount.getSortCode(), userAccount.getCurrencyID(), userAccount.getAccountType(), user);
+        Account account = new Account(userAccount.getSortCode(), userAccount.getCurrencyID(), userAccount.getAccountType(), userAccount.getIBAN(), user);
         accountRepo.save(account);
         UserAccount newUserAccount = new UserAccount(user.getuserID(), account.getAccountID(), user.getFirstName(),
-                user.getLastName(), user.getEmail(), user.getAddress_houseNum(), userAccount.getAddress_streetName(),
+                user.getLastName(), user.getEmail(), user.getAddress_houseNum(), user.getAddress_streetName(),
                 user.getAddress_city(), user.getAddress_state(), user.getAddress_postCode(), user.getContactFlag(),
-                user.getCreateDateTime(), account.getAccountType(), account.getSortCode(), account.getCurrencyID());
+                user.getCreateDateTime(), account.getAccountType(), account.getIBAN(), account.getSortCode(), account.getCurrencyID() );
         return newUserAccount;
     }
 

@@ -17,13 +17,14 @@ public class UserAccount {
     private Boolean isContactFlag;
     private Date createDateTime;
     private String accountType;
+    private String IBAN;
     private String sortCode;
     private String currencyID;
     private double accountBalance;
 
-    public UserAccount(Long userID, Long accountID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag, Date createDateTime, String accountType, String sortCode, String currencyID) {
+    public UserAccount(Long userID, Long accountID, String firstName, String lastName, String email, String address_houseNum, String address_streetName, String address_city, String address_state, String address_postCode, Boolean isContactFlag, Date createDateTime, String accountType, String IBAN, String sortCode, String currencyID) {
         this.userID = userID;
-        this.accountID= accountID;
+        this.accountID = accountID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -35,9 +36,10 @@ public class UserAccount {
         this.isContactFlag = isContactFlag;
         this.createDateTime = createDateTime;
         this.accountType = accountType;
+        this.IBAN = IBAN;
         this.sortCode = sortCode;
         this.currencyID = currencyID;
-        }
+    }
 
     public UserAccount(Long userID, Long accountID, String firstName, String lastName, String email, String accountType, String sortCode, String currencyID, double accountBalance) {
         this.userID = userID;
@@ -53,6 +55,8 @@ public class UserAccount {
 
     public UserAccount() {
     }
+
+
 
     public Long getAccountID() {
         return accountID;
@@ -182,6 +186,14 @@ public class UserAccount {
         this.accountBalance = accountBalance;
     }
 
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public void setIBAN(String IBAN) {
+        this.IBAN = IBAN;
+    }
+
     @Override
     public String toString() {
         return "UserAccount{" +
@@ -201,6 +213,7 @@ public class UserAccount {
                 ", sortCode='" + sortCode + '\'' +
                 ", currencyID='" + currencyID + '\'' +
                 ", accountBalance='" + accountBalance + '\'' +
+                ", IBAN ='" + IBAN + '\'' +
                 '}';
     }
 }
