@@ -53,18 +53,18 @@ public class Account {
         this.dateCreated = dateCreated;
         this.user = user;
         this.transactions = transactions;
-//        this.dateCreated = new Timestamp(new Date().getTime());
     }
 
     public Account() {
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public Account(String sortCode, String currencyID, String accountType, User user) {
+    public Account(String sortCode, String currencyID, String accountType, String IBAN, User user) {
         this.sortCode = sortCode;
         this.currencyID = currencyID;
         this.accountType = accountType;
         this.user = user;
+        this.IBAN = IBAN;
         this.accountBalance = 10000;
         this.accountStatus = "Active";
         this.dateCreated = new Timestamp(new Date().getTime());
