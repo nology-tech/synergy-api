@@ -146,8 +146,8 @@ public class UserAccount {
         return createDateTime;
     }
 
-    public void setCreateDateTime() {
-        this.createDateTime = createDateTime;
+    public void setCreateDateTime(Date createDateTime) {
+            this.createDateTime = createDateTime;
     }
 
     public String getAccountType() {
