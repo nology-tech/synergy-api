@@ -47,16 +47,16 @@ public class TransactionService {
         Transaction transaction = new Transaction();
         transaction.setPayeeAccount(payeeAccount);
         transaction.setRecipientAccount(recipientAccount);
-        transaction.setPayeeAmount(((Double) rawTransaction.get("payeeAmount")).doubleValue());
-        transaction.setRecipientAmount(((Double)  rawTransaction.get("recipientAmount")).doubleValue());
-        transaction.setExchangeRate((Double) rawTransaction.get("txnExchangeRate"));
+        transaction.setPayeeAmount(((Number) rawTransaction.get("payeeAmount")).doubleValue());
+        transaction.setRecipientAmount(((Number)  rawTransaction.get("recipientAmount")).doubleValue());
+        transaction.setExchangeRate((double) rawTransaction.get("txnExchangeRate"));
         //transaction.setPayeeFees(((Integer) rawTransaction.get("payeeFees")).doubleValue());
         transaction.setPayeeFees(0.00);
-        transaction.setPayeeTotalAmountCharged(((Double) rawTransaction.get("payeeTotalAmountCharged")).doubleValue());
+        transaction.setPayeeTotalAmountCharged(((Number) rawTransaction.get("payeeTotalAmountCharged")).doubleValue());
         Date date = new Timestamp(new Date().getTime());
         transaction.setDateCreated(date);
         transactionRepository.save(transaction);
-        payeeAccount.setAccountBalance(payeeAccount.getAccountBalance()-((Double) rawTransaction.get("payeeAmount")).doubleValue());
+        payeeAccount.setAccountBalance(payeeAccount.getAccountBalance()-((Number) rawTransaction.get("payeeAmount")).doubleValue());
         accountRepository.save(payeeAccount);
         return transaction;
     }
